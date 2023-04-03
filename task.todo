@@ -1,21 +1,22 @@
-- pirate TNT: generates a pirate ship and it start shooting the cannons from there to th eplayer
+- pirate TNT: generates a pirate ship and it start shooting the cannons from there to th eplayer @done
 - Dimension TNT: tp the player to a random custom dimension @done
 - Sandstorm TNT: with dust particles and some patterns to make it looks like a storm, give slowness to the player and reduce his visibility with particles @done
 - Acid rain TNT: make rain and the rain will hurt to the players and mobs. also add a particle like a laser beam to the sky to simulate the interaction @done
 - Cloud TNT: a cloud follow the player and rain tnt from it for a while @done
 - Music TNT: put music and then the player will die bc he can’t stop dancing, and maybe you could make the mobs around start spinning with music particles at his head @done
 - Solar TNT: makes the sun brighter and idk if you can use a custom shader to make the screen more white. and the sun will hurt the players and mobs for a while @done
-- Ninja TNT: spawns ninjas around who will can jump like slimes and attack like zombi ninjas (retextured zombies)
+- Ninja TNT: spawns ninjas around who will can jump like slimes and attack like zombi ninjas (retextured zombies) @done
 - Time TNT: freeze all the mobs around also the players and maybe you could add a clock particle with the elder guardian particle @done
 - Glitch TNT: @done
 - Space laser TNT: summon the satellite and shoot a big destructive laser @done
 - Confetti TNT: @done
 - Pufferfish TNT: same like repercution tnt but with pufferfish @done
 - Inverse TNT: revert the player screen like we did in the past in the other map, I can give you the example if I didn’t @done
-- Lucky TNT: will give you any tnt
+- Lucky TNT: will give you any tnt @done
 
 -! Change rain particle
 -! Update TNT count in lucky TNT
 
 Send to Euc
 - `master` tag for exclusion  
+- ninja tnt used speed instead of jump

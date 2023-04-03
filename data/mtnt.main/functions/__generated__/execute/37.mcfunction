@@ -1,4 +1,5 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-tag @a[tag=!master] add in_sandstorm
-schedule function mtnt.main:__generated__/schedule/0 15s replace
+summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.ninja","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110014}}]}
+setblock ~ ~ ~ tnt
+tp @s ~ ~-600 ~

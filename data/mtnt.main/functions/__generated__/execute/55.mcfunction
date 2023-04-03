@@ -1,4 +1,5 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-tellraw @a [{"selector":"@s"},{"text":" Died of Dancing","color":"red"}]
-kill @s
+weather rain
+scoreboard players set acid_rain private 1
+schedule function mtnt.main:__generated__/schedule/1 15s replace

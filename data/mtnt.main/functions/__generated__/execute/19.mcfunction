@@ -1,5 +1,5 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.invert","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110008}}]}
-setblock ~ ~ ~ tnt
-tp @s ~ ~-600 ~
+execute if entity @s[tag=puffcursion_child] run function mtnt.main:__generated__/execute/20
+execute if entity @s[tag=puffcursion_child_2] run function mtnt.main:__generated__/execute/21
+execute if entity @s[tag=puffcursion_child_3] run function mtnt.main:__generated__/execute/22

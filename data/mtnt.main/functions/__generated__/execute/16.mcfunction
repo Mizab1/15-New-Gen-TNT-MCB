@@ -1,5 +1,6 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.music","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110005}}]}
-setblock ~ ~ ~ tnt
-tp @s ~ ~-600 ~
+particle block red_sand ~ ~1 ~ 1 1 1 1 100 normal
+effect give @s minecraft:blindness 3 10 true
+effect give @s minecraft:darkness 3 10 true
+effect give @s minecraft:slowness 3 3 true

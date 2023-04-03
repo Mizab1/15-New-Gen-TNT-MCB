@@ -3,9 +3,21 @@ import ./macros/private_macros.mcm
 
 function load{
     # Make a Dummy scoreboard of Fuse Timer
+    scoreboard objectives add LANG_MC_INTERNAL dummy
+
     scoreboard objectives add fuse_time dummy
     scoreboard objectives add rng_score dummy
     scoreboard objectives add private dummy
+
+    scoreboard objectives add pos_x1 dummy
+    scoreboard objectives add pos_y1 dummy
+    scoreboard objectives add pos_z1 dummy
+
+    scoreboard objectives add pos_x2 dummy
+    scoreboard objectives add pos_y2 dummy
+    scoreboard objectives add pos_z2 dummy
+
+
     gamerule universalAnger true  
     gamerule showDeathMessages false
     gamerule keepInventory true
@@ -26,10 +38,40 @@ clock 30t{
     execute at @e[type=armor_stand, tag=cloud] run{
         summon tnt ~ ~ ~ {Fuse:40}
     }
+
+    # cannon firing
+    execute as @e[type=armor_stand, tag=cannon] at @s anchored eyes positioned ^ ^ ^1 if entity @a[distance=..20] run{
+        summon tnt ~ ~ ~ {Tags:["cannon_ball"], Fuse:40}
+    }
+    execute as @e[type=tnt, tag=cannon_ball] at @s rotated as @e[type=armor_stand, tag=cannon, limit=1, sort=nearest] run{
+        execute store result score @s pos_x1 run data get entity @s Pos[0] 1000
+        execute store result score @s pos_y1 run data get entity @s Pos[1] 1000
+        execute store result score @s pos_z1 run data get entity @s Pos[2] 1000
+
+        tp @s ^ ^ ^0.1
+
+        execute store result score @s pos_x2 run data get entity @s Pos[0] 1000
+        execute store result score @s pos_y2 run data get entity @s Pos[1] 1000
+        execute store result score @s pos_z2 run data get entity @s Pos[2] 1000
+
+        scoreboard players operation @s pos_x2 -= @s pos_x1
+        scoreboard players operation @s pos_y2 -= @s pos_y1
+        scoreboard players operation @s pos_z2 -= @s pos_z1 
+
+        execute store result entity @s Motion[0] double 0.01 run scoreboard players get @s pos_x2
+        execute store result entity @s Motion[1] double 0.01 run scoreboard players get @s pos_y2
+        execute store result entity @s Motion[2] double 0.01 run scoreboard players get @s pos_z2 
+
+        tag @s add tag_added
+    }
 }
 clock 10t{
     execute as @e[type=armor_stand, tag=sat_firing] at @s run{
         particle dust 1.000 0.918 0.180 2 ~ ~-4.5 ~ 0 3 0 1 100 normal
+    }
+    #cannon
+    execute as @e[type=armor_stand, tag=cannon] at @s run{
+        tp @s ~ ~ ~ facing entity @a[limit=1, sort=nearest]
     }
 }
 function tick{
@@ -129,6 +171,10 @@ function tick{
         #--- ninja
         execute if entity @s[tag=ninja] run{
             placetnt ninja 110014
+        }
+        #--- pirate
+        execute if entity @s[tag=pirate] run{
+            placetnt pirate 110015
         }
     }
 
@@ -460,47 +506,36 @@ function tick{
                 # Execute the Exploding Mechanics
                 execute if score @s fuse_time matches 2 run{
                     rng range 0 5 random_tnt rng_score
-                    execute if score random_tnt rng_score matches 0 run{
+                    execute(if score random_tnt rng_score matches 0){
                         execute as @a run function mtnt.main:dimension
-                    }
-                    execute if score random_tnt rng_score matches 1 run{
+                    }else execute(if score random_tnt rng_score matches 1){
                         execute as @a run function mtnt.main:sandstorm
-                    }
-                    execute if score random_tnt rng_score matches 2 run{
+                    }else execute(if score random_tnt rng_score matches 2){
                         execute as @a run function mtnt.main:acid_rain
-                    }
-                    execute if score random_tnt rng_score matches 3 run{
+                    }else execute(if score random_tnt rng_score matches 3){
                         execute as @a run function mtnt.main:cloud
-                    }
-                    execute if score random_tnt rng_score matches 4 run{
+                    }else execute(if score random_tnt rng_score matches 4){
                         execute as @a run function mtnt.main:music
-                    }
-                    execute if score random_tnt rng_score matches 5 run{
+                    }else execute(if score random_tnt rng_score matches 5){
                         execute as @a run function mtnt.main:sun
-                    }
-                    execute if score random_tnt rng_score matches 6 run{
+                    }else execute(if score random_tnt rng_score matches 6){
                         execute as @a run function mtnt.main:time
-                    }
-                    execute if score random_tnt rng_score matches 7 run{
+                    }else execute(if score random_tnt rng_score matches 7){
                         execute as @a run function mtnt.main:invert
-                    }
-                    execute if score random_tnt rng_score matches 8 run{
+                    }else execute(if score random_tnt rng_score matches 8){
                         execute as @a run function mtnt.main:lucky
-                    }
-                    execute if score random_tnt rng_score matches 9 run{
+                    }else execute(if score random_tnt rng_score matches 9){
                         execute as @a run function mtnt.main:confetti
-                    }
-                    execute if score random_tnt rng_score matches 10 run{
+                    }else execute(if score random_tnt rng_score matches 10){
                         execute as @a run function mtnt.main:laser
-                    }
-                    execute if score random_tnt rng_score matches 11 run{
+                    }else execute(if score random_tnt rng_score matches 11){
                         execute as @a run function mtnt.main:puffcursion
-                    }
-                    execute if score random_tnt rng_score matches 12 run{
+                    }else execute(if score random_tnt rng_score matches 12){
                         execute as @a run function mtnt.main:glitch
-                    }
-                    execute if score random_tnt rng_score matches 13 run{
+                    }else execute(if score random_tnt rng_score matches 13){
                         execute as @a run function mtnt.main:ninja
+                    }else execute(if score random_tnt rng_score matches 14){
+                        execute as @a run function mtnt.main:pirate
                     }
                 }
 
@@ -684,8 +719,7 @@ function tick{
                 kill @s
             }
         }
-
-        
+   
         #--- ninja
         execute if entity @s[tag=tnt.ninja] run{
             execute(if entity @e[type=tnt,distance=..0.5]){
@@ -711,6 +745,39 @@ function tick{
                 execute if score @s fuse_time matches 1 run{
                     kill @e[type=tnt, distance=..1]
                     kill @e[type=armor_stand,tag=tnt.ninja,distance=..4]
+                    kill @s
+                }
+            }
+            execute(unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5]){
+                # Breaking
+                kill @s
+            }
+        }
+
+        #--- pirate
+        execute if entity @s[tag=tnt.pirate] run{
+            execute(if entity @e[type=tnt,distance=..0.5]){
+                # Teleport itself to the ignited TNT
+                tp @s @e[type=tnt,distance=..0.5,sort=nearest,limit=1]
+
+                # Use its 'fuse_time' scoreboard to link with 'Fuse' of TNT
+                execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
+
+                # Runs a particle effect when ignited
+                execute if score @s fuse_time matches 1..80 run block{
+                    particle minecraft:block jungle_planks ~ ~ ~ 1 1 1 1 20
+                }
+
+                # Execute the Exploding Mechanics
+                execute if score @s fuse_time matches 2 run{
+                    tellraw @a {"text":"A pirate ship has been summoned!", "color":"red"}
+                    place template mtnt.main:ship ~-3 ~ ~-10
+                }
+
+                # Kill the AS if TNT is exploded
+                execute if score @s fuse_time matches 1 run{
+                    kill @e[type=tnt, distance=..1]
+                    kill @e[type=armor_stand,tag=tnt.pirate,distance=..4]
                     kill @s
                 }
             }
@@ -846,6 +913,10 @@ function glitch{
 function ninja{
     givetnt <Ninja TNT> 110014 ninja
     tellraw @s {"text":"Summon ninja which will try to kill the player","color":"gold"}
+}
+function pirate{
+    givetnt <Pirate TNT> 110015 pirate
+    tellraw @s {"text":"Summon pirate ship with cannon","color":"gold"}
 }
 
 #> Misc.
