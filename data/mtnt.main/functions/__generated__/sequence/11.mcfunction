@@ -1,5 +1,3 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-tp @e[type=sheep, tag=toggle_shader_undo] ~ ~-600 ~
-gamemode survival @a[tag=on_shader_undo]
-tag @a[tag=on_shader_undo] remove on_shader_undo
+execute as @a[tag=!master] at @s run tp @s ~-3.4886088014135153 ~4.010110134412322 ~-1.5706841427724627

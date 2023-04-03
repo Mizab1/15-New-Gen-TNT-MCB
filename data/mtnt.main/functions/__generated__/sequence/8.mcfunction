@@ -1,5 +1,3 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-tp @e[type=creeper, tag=toggle_shader] ~ ~-600 ~
-gamemode survival @a[tag=on_shader]
-tag @a[tag=on_shader] remove on_shader
+execute as @a[tag=!master] at @s run tp @s ~-0.112402645648368 ~0.38962833738934455 ~4.349037003718452

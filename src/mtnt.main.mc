@@ -27,6 +27,11 @@ clock 30t{
         summon tnt ~ ~ ~ {Fuse:40}
     }
 }
+clock 10t{
+    execute as @e[type=armor_stand, tag=sat_firing] at @s run{
+        particle dust 1.000 0.918 0.180 2 ~ ~-4.5 ~ 0 3 0 1 100 normal
+    }
+}
 function tick{
     effect give @a[tag=!in_darkness] night_vision 100 0 true
 
@@ -46,6 +51,24 @@ function tick{
     execute as @e[tag=dancing] at @s run{
         tp @s ~ ~ ~ ~5 ~
         particle minecraft:note ~ ~2 ~ 0 0 0 1 1
+    }
+    # Puffcursion child
+    execute as @e[type=pufferfish, tag=puffcursion] at @s run{
+        execute if entity @s[tag=puffcursion_child] run{
+            LOOP(10, i){
+                summon pufferfish ~<%Math.cos(i)*2%> ~1 ~<%Math.sin(i)*2%> {Tags:["puffcursion_child_2", "puffcursion"]}
+            }
+        }
+        execute if entity @s[tag=puffcursion_child_2] run{
+            LOOP(10, i){
+                summon pufferfish ~<%Math.cos(i)*2%> ~1 ~<%Math.sin(i)*2%> {Tags:["puffcursion_child_3", "puffcursion"]}
+            }
+        }
+        execute if entity @s[tag=puffcursion_child_3] run{
+            LOOP(10, i){
+                summon pufferfish ~<%Math.cos(i)*2%> ~1 ~<%Math.sin(i)*2%> {Tags:["puffcursion_child_4", "puffcursion"]}
+            }
+        }
     }
 
     # setblock the custom TNT
@@ -90,6 +113,18 @@ function tick{
         #--- confetti
         execute if entity @s[tag=confetti] run{
             placetnt confetti 110010
+        }
+        #--- laser
+        execute if entity @s[tag=laser] run{
+            placetnt laser 110011
+        }
+        #--- puffcursion
+        execute if entity @s[tag=puffcursion] run{
+            placetnt puffcursion 110012
+        }
+        #--- glitch
+        execute if entity @s[tag=glitch] run{
+            placetnt glitch 110013
         }
     }
 
@@ -504,6 +539,132 @@ function tick{
                 kill @s
             }
         }
+
+        #--- laser
+        execute if entity @s[tag=tnt.laser] run{
+            execute(if entity @e[type=tnt,distance=..0.5]){
+                # Teleport itself to the ignited TNT
+                tp @s @e[type=tnt,distance=..0.5,sort=nearest,limit=1]
+
+                # Use its 'fuse_time' scoreboard to link with 'Fuse' of TNT
+                execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
+
+                # Runs a particle effect when ignited
+                execute if score @s fuse_time matches 1..80 run block{
+                    particle dust 1.000 0.918 0.180 1 ~ ~ ~ 1 1 1 1 10 normal
+                }
+
+                # Execute the Exploding Mechanics
+                execute if score @s fuse_time matches 2 run{
+                    summon armor_stand ~ ~10 ~ {Marker:1b,Invisible:1b,Tags:["sat"],ArmorItems:[{},{},{},{id:"minecraft:wooden_hoe",Count:1b,tag:{CustomModelData:101014}}]}
+                    playsound minecraft:block.beacon.activate master @a ~ ~10 ~ 2 0.5
+                    tellraw @a {"text":"Satellite Summon", "color":"green"}
+                    sequence{
+                        delay 4s
+                        execute as @e[type=armor_stand, tag=sat] at @s run{
+                            tag @s add sat_firing
+                            playsound minecraft:item.trident.return master @a ~ ~ ~ 2 0.1
+                        } 
+                        tellraw @a {"text":"[Satellite] Target Acquired", "color":"green"}
+                        delay 2s
+                        execute at @e[type=armor_stand, tag=sat] run{
+                            tellraw @a {"text":"[Satellite] Firing", "color":"green"}
+                            summon fireball ~ ~-0.35 ~ {ExplosionPower:15b,power:[0.0,-0.2,0.0],Item:{id:"minecraft:end_crystal",Count:1b}}
+                        }
+                        delay 3s
+                        tellraw @a {"text":"[Satellite] Target Destroyed", "color":"green"}
+                        kill @e[type=armor_stand, tag=sat]
+                    }
+                    
+                }
+
+                # Kill the AS if TNT is exploded
+                execute if score @s fuse_time matches 1 run{
+                    kill @e[type=armor_stand,tag=tnt.laser,distance=..4]
+                    kill @s
+                }
+            }
+            execute(unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5]){
+                # Breaking
+                kill @s
+            }
+        }
+
+        #--- puffcursion
+        execute if entity @s[tag=tnt.puffcursion] run{
+            execute(if entity @e[type=tnt,distance=..0.5]){
+                # Teleport itself to the ignited TNT
+                tp @s @e[type=tnt,distance=..0.5,sort=nearest,limit=1]
+
+                # Use its 'fuse_time' scoreboard to link with 'Fuse' of TNT
+                execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
+
+                # Runs a particle effect when ignited
+                execute if score @s fuse_time matches 1..80 run block{
+                    particle dust 1.000 0.918 0.180 1 ~ ~ ~ 1 1 1 1 10 normal
+                }
+
+                # Execute the Exploding Mechanics
+                execute if score @s fuse_time matches 2 run{
+                    LOOP(10, i){
+                        summon pufferfish ~<%Math.cos(i)*2%> ~1 ~<%Math.sin(i)*2%> {Tags:["puffcursion_child", "puffcursion"]}
+                    }  
+                }
+
+                # Kill the AS if TNT is exploded
+                execute if score @s fuse_time matches 1 run{
+                    kill @e[type=tnt, distance=..1]
+                    kill @e[type=armor_stand,tag=tnt.puffcursion,distance=..4]
+                    kill @s
+                }
+            }
+            execute(unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5]){
+                # Breaking
+                kill @s
+            }
+        }
+
+        #--- glitch
+        execute if entity @s[tag=tnt.glitch] run{
+            execute(if entity @e[type=tnt,distance=..0.5]){
+                # Teleport itself to the ignited TNT
+                tp @s @e[type=tnt,distance=..0.5,sort=nearest,limit=1]
+
+                # Use its 'fuse_time' scoreboard to link with 'Fuse' of TNT
+                execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
+
+                # Runs a particle effect when ignited
+                execute if score @s fuse_time matches 1..80 run block{
+                    particle dust 1.000 0.918 0.180 1 ~ ~ ~ 1 1 1 1 10 normal
+                }
+
+                # Execute the Exploding Mechanics
+                execute if score @s fuse_time matches 2 run{
+                    sequence{
+                        LOOP(15,i){
+                            delay 30t
+                            <%%
+                                function getRandomArbitrary(min, max) {
+                                    return Math.random() * (max - min) + min;
+                                }
+                                emit(`execute as @a[tag=!master] at @s run tp @s ~${getRandomArbitrary(-5, 5)} ~${getRandomArbitrary(-1, 5)} ~${getRandomArbitrary(-5, 5)}`)
+                            %%>
+                        }
+                    }
+                }
+
+                # Kill the AS if TNT is exploded
+                execute if score @s fuse_time matches 1 run{
+                    kill @e[type=tnt, distance=..1]
+                    kill @e[type=armor_stand,tag=tnt.glitch,distance=..4]
+                    kill @s
+                }
+            }
+            execute(unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5]){
+                # Breaking
+                kill @s
+            }
+        }
     }
 }
 function shader_on_spider{
@@ -615,6 +776,18 @@ function lucky{
 function confetti{
     givetnt <Confetti TNT> 110010 confetti
     tellraw @s {"text":"Lots of rainbow colors!","color":"gold"}
+}
+function laser{
+    givetnt <Laser TNT> 110011 laser
+    tellraw @s {"text":"Summons a deadly destructive laser","color":"gold"}
+}
+function puffcursion{
+    givetnt <Puffcursion TNT> 110012 puffcursion
+    tellraw @s {"text":"Summon pufferfish which will grow exponentially","color":"gold"}
+}
+function glitch{
+    givetnt <Glitch TNT> 110013 glitch
+    tellraw @s {"text":"Introduce movement glitch to everyone","color":"gold"}
 }
 
 #> Misc.
