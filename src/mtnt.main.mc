@@ -71,7 +71,7 @@ clock 10t{
     }
     #cannon
     execute as @e[type=armor_stand, tag=cannon] at @s run{
-        tp @s ~ ~ ~ facing entity @a[limit=1, sort=nearest]
+        tp @s ~ ~ ~ facing entity @a[distance=..30, limit=1, sort=nearest]
     }
 }
 function tick{
