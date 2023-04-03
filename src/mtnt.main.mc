@@ -71,6 +71,18 @@ function tick{
         execute if entity @s[tag=music] run{
             placetnt music 110005
         }
+        #--- sun
+        execute if entity @s[tag=sun] run{
+            placetnt sun 110006
+        }
+        #--- time
+        execute if entity @s[tag=time] run{
+            placetnt time 110007
+        }
+        #--- invert
+        execute if entity @s[tag=invert] run{
+            placetnt invert 110008
+        }
     }
 
     # Tnt validation and explosion handler
@@ -262,9 +274,129 @@ function tick{
                 kill @s
             }
         }
+
+        #--- sun
+        execute if entity @s[tag=tnt.sun] run{
+            execute(if entity @e[type=tnt,distance=..0.5]){
+                # Teleport itself to the ignited TNT
+                tp @s @e[type=tnt,distance=..0.5,sort=nearest,limit=1]
+
+                # Use its 'fuse_time' scoreboard to link with 'Fuse' of TNT
+                execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
+
+                # Runs a particle effect when ignited
+                execute if score @s fuse_time matches 1..80 run block{
+                    particle minecraft:block gold_block ~ ~ ~ 1 1 1 1 20
+                }
+
+                # Execute the Exploding Mechanics
+                execute if score @s fuse_time matches 2 run{
+                    execute as @a[tag=!master] at @s run{
+                        function mtnt.main:shader_on_spider
+                    }
+                    scoreboard players set acid_rain private 1
+                    # ! TODO: Add Shaders
+                    schedule 15s replace{
+                        execute as @a[tag=!master] at @s run{
+                            function mtnt.main:shader_off_spider
+                        }
+                        scoreboard players set acid_rain private 0
+                    }
+                    tellraw @a [{"text":"The sun is now very bright","color":"red"}]
+                }
+
+                # Kill the AS if TNT is exploded
+                execute if score @s fuse_time matches 1 run{
+                    kill @e[type=armor_stand,tag=tnt.sun,distance=..4]
+                    kill @e[type=tnt,distance=..1]
+                    kill @s
+                }
+            }
+            execute(unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5]){
+                # Breaking
+                kill @s
+            }
+        }
+
+        #--- time
+        execute if entity @s[tag=tnt.time] run{
+            execute(if entity @e[type=tnt,distance=..0.5]){
+                # Teleport itself to the ignited TNT
+                tp @s @e[type=tnt,distance=..0.5,sort=nearest,limit=1]
+
+                # Use its 'fuse_time' scoreboard to link with 'Fuse' of TNT
+                execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
+
+                # Runs a particle effect when ignited
+                execute if score @s fuse_time matches 1..80 run block{
+                    particle minecraft:block yellow_terracotta ~ ~ ~ 1 1 1 1 20
+                }
+
+                # Execute the Exploding Mechanics
+                execute if score @s fuse_time matches 2 run{
+                    effect give @e[type=#minecraft:all_living, tag=!master, distance=..40] slowness 15 30 true
+                    effect give @e[type=#minecraft:ded_mobs, tag=!master, distance=..40] slowness 15 30 true
+                    execute as @a[tag=!master] at @s run{
+                        particle minecraft:elder_guardian ~ ~ ~ 0 0 0 1 1
+                    }
+                    tellraw @a [{"text":"The time is now stopped","color":"gold"}]
+                }
+
+                # Kill the AS if TNT is exploded
+                execute if score @s fuse_time matches 1 run{
+                    kill @e[type=armor_stand,tag=tnt.time,distance=..4]
+                    kill @s
+                }
+            }
+            execute(unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5]){
+                # Breaking
+                kill @s
+            }
+        }
+
+        #--- invert
+        execute if entity @s[tag=tnt.invert] run{
+            execute(if entity @e[type=tnt,distance=..0.5]){
+                # Teleport itself to the ignited TNT
+                tp @s @e[type=tnt,distance=..0.5,sort=nearest,limit=1]
+
+                # Use its 'fuse_time' scoreboard to link with 'Fuse' of TNT
+                execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
+
+                # Runs a particle effect when ignited
+                execute if score @s fuse_time matches 1..80 run block{
+                    particle minecraft:reverse_portal ~ ~ ~ 1 1 1 1 20
+                }
+
+                # Execute the Exploding Mechanics
+                execute if score @s fuse_time matches 2 run{
+                    execute as @a[tag=!master] at @s run{
+                        function mtnt.main:shader_on_creeper
+                    }
+                    # ! TODO: Add Shaders
+                    schedule 15s replace{
+                        execute as @a[tag=!master] at @s run{
+                            function mtnt.main:shader_off_creeper
+                        }
+                    }
+                    tellraw @a [{"text":"The screen is now inverted","color":"green"}]
+                }
+
+                # Kill the AS if TNT is exploded
+                execute if score @s fuse_time matches 1 run{
+                    kill @e[type=armor_stand,tag=tnt.invert,distance=..4]
+                    kill @e[type=tnt,distance=..1]
+                    kill @s
+                }
+            }
+            execute(unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5]){
+                # Breaking
+                kill @s
+            }
+        }
     }
 }
-function shader_on{
+function shader_on_spider{
     spawnpoint @s ~ ~ ~ ~ 
     gamemode spectator @s 
     summon spider ~ ~ ~ {NoAI:1b, Tags:["toggle_shader"]}
@@ -277,11 +409,11 @@ function shader_on{
         gamerule doImmediateRespawn false
         delay 10t
         tp @e[type=spider, tag=toggle_shader] ~ ~-600 ~
-        gamemode creative @a[tag=on_shader]
+        gamemode survival @a[tag=on_shader]
         tag @a[tag=on_shader] remove on_shader
     }
 }
-function shader_off{
+function shader_off_spider{
     spawnpoint @s ~ ~ ~ ~ 
     gamemode spectator @s 
     summon sheep ~ ~ ~ {NoAI:1b, Tags:["toggle_shader_undo"]}
@@ -294,7 +426,41 @@ function shader_off{
         gamerule doImmediateRespawn false
         delay 10t
         tp @e[type=sheep, tag=toggle_shader_undo] ~ ~-600 ~
-        gamemode creative @a[tag=on_shader_undo]
+        gamemode survival @a[tag=on_shader_undo]
+        tag @a[tag=on_shader_undo] remove on_shader_undo
+    }
+}
+function shader_on_creeper{
+    spawnpoint @s ~ ~ ~ ~ 
+    gamemode spectator @s 
+    summon creeper ~ ~ ~ {NoAI:1b, Tags:["toggle_shader"]}
+    spectate @e[tag=toggle_shader, limit=1]
+    tag @s add on_shader
+    gamerule doImmediateRespawn true
+    sequence{
+        delay 10t
+        kill @a[tag=on_shader]
+        gamerule doImmediateRespawn false
+        delay 10t
+        tp @e[type=creeper, tag=toggle_shader] ~ ~-600 ~
+        gamemode survival @a[tag=on_shader]
+        tag @a[tag=on_shader] remove on_shader
+    }
+}
+function shader_off_creeper{
+    spawnpoint @s ~ ~ ~ ~ 
+    gamemode spectator @s 
+    summon sheep ~ ~ ~ {NoAI:1b, Tags:["toggle_shader_undo"]}
+    spectate @e[tag=toggle_shader_undo, limit=1]
+    tag @s add on_shader_undo
+    gamerule doImmediateRespawn true
+    sequence{
+        delay 10t
+        kill @a[tag=on_shader_undo]
+        gamerule doImmediateRespawn false
+        delay 10t
+        tp @e[type=sheep, tag=toggle_shader_undo] ~ ~-600 ~
+        gamemode survival @a[tag=on_shader_undo]
         tag @a[tag=on_shader_undo] remove on_shader_undo
     }
 }
@@ -319,6 +485,18 @@ function cloud{
 function music{
     givetnt <Music TNT> 110005 music
     tellraw @a {"text":"Play music and the player will die dancing","color":"green"}
+}
+function sun{
+    givetnt <Sun TNT> 110006 sun
+    tellraw @a {"text":"Make the sun brighter and start killing the player and mob","color":"green"}
+}
+function time{
+    givetnt <Time TNT> 110007 time
+    tellraw @a {"text":"Freeze all the mobs and players at their position","color":"green"}
+}
+function invert{
+    givetnt <Invert TNT> 110008 invert
+    tellraw @a {"text":"Invert the player's POV","color":"green"}
 }
 
 #> Misc.

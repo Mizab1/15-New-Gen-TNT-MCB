@@ -5,3 +5,6 @@ execute if entity @s[tag=sandstorm] run function mtnt.main:__generated__/execute
 execute if entity @s[tag=acid_rain] run function mtnt.main:__generated__/execute/9
 execute if entity @s[tag=cloud] run function mtnt.main:__generated__/execute/10
 execute if entity @s[tag=music] run function mtnt.main:__generated__/execute/11
+execute if entity @s[tag=sun] run function mtnt.main:__generated__/execute/12
+execute if entity @s[tag=time] run function mtnt.main:__generated__/execute/13
+execute if entity @s[tag=invert] run function mtnt.main:__generated__/execute/14
