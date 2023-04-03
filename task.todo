@@ -9,12 +9,13 @@
 - Time TNT: freeze all the mobs around also the players and maybe you could add a clock particle with the elder guardian particle @done
 - Glitch TNT:
 - Space laser TNT: summon the satellite and shoot a big destructive laser
-- Confetti TNT
+- Confetti TNT: @done
 - Pufferfish TNT: same like repercution tnt but with pufferfish
-- Inverse TNT: revert the player screen like we did in the past in the other map, I can give you the example if I didn’t
+- Inverse TNT: revert the player screen like we did in the past in the other map, I can give you the example if I didn’t @done
 - Lucky TNT: will give you any tnt
 
 -! Change rain particle
+-! Update TNT count in lucky TNT
 
 Send to Euc
 - `master` tag for exclusion  
