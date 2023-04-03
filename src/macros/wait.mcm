@@ -1,0 +1,46 @@
+
+#wait as @e for 200t run{}
+#there is no positional context so you need to add that manually
+macro wait{
+    load{
+        scoreboard objectives add mcb.context_wait dummy
+        block{
+            scoreboard players add @e[tag=mcb.context_wait] mcb.context_wait 1
+            schedule function $block 1t
+        }
+    }
+    #checks for the time needed to wait - supports multiple units such as tick, seconds and minutes, also errors out if no unit is provided
+    !IF("$$3".endsWith("t")){
+        tick{
+        execute as $$1 if entity @s[scores={mcb.context_wait=<%"$$3".substring(0,"$$3".length - 1)%>}] run{
+            function $$4
+            scoreboard players set @s mcb.context_wait 0
+            tag @s remove mcb.context_wait
+            }
+        }
+    }!IF("$$3".endsWith("s")){
+        tick{
+        execute as $$1 if entity @s[scores={mcb.context_wait=<%"$$3".substring(0,"$$3".length - 1)*20%>}] run{
+            function $$4
+            scoreboard players set @s mcb.context_wait 0
+            tag @s remove mcb.context_wait
+            }
+        }
+    }!IF("$$3".endsWith("m")){
+        tick{
+            execute as $$1 if entity @s[scores={mcb.context_wait=<%"$$3".substring(0,"$$3".length - 1)*20*60%>}] run{
+                function $$4
+                scoreboard players set @s mcb.context_wait 0
+                tag @s remove mcb.context_wait
+                }
+        }
+    }!IF(!"$$3".endsWith("m")&&!"$$3".endsWith("s")&&!"$$3".endsWith("t")){
+        error [NO UNIT] Please provide a time unit to the delay (t|s|m)
+    }
+
+    #adds the selector to the internal macro clock
+    !IF("$$0"==="as"){
+        tag $$1 add mcb.context_wait
+        scoreboard players add $$1 mcb.context_wait 0
+    }
+}

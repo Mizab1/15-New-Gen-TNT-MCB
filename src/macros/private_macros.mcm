@@ -1,0 +1,8 @@
+macro placetnt{
+    summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.$$0","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:$$1}}]}
+    setblock ~ ~ ~ tnt
+    tp @s ~ ~-600 ~
+}
+macro givetnt{
+    give @p endermite_spawn_egg{display:{Name:'{"text":"$$0","color":"#FF0808","italic":false}'},CustomModelData:$$1,EntityTag:{Silent:1b,NoAI:1b,Tags:["$$2","tnt.endermite"],ActiveEffects:[{Id:14b,Amplifier:1b,Duration:999999,ShowParticles:0b}]}} 1
+}

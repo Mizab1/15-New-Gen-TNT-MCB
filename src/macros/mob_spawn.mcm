@@ -1,0 +1,181 @@
+macro tier_1{
+    execute(if score rng rng_score matches 1..2){
+        macro normal_zombie $$0 $$1 $$2
+    }else execute(if score rng rng_score matches 3){
+        macro miner_zombie $$0 $$1 $$2
+    }else execute(if score rng rng_score matches 4){
+        macro builder_zombie $$0 $$1 $$2
+    }
+}
+
+macro tier_2{
+
+    macro tier_1 $$0 $$1 $$2
+
+    execute(if score rng rng_score matches 5){
+        macro magma_zombie $$0 $$1 $$2
+    }else execute(if score rng rng_score matches 6){
+        macro fast_zombie $$0 $$1 $$2
+    }else execute(if score rng rng_score matches 7){
+        macro strong_zombie $$0 $$1 $$2
+    }else execute(if score rng rng_score matches 8){
+        macro brute_zombie $$0 $$1 $$2
+    }else execute(if score rng rng_score matches 9){
+        macro mega_brute_zombie $$0 $$1 $$2
+    }else execute(if score rng rng_score matches 10){
+        macro end_zombie $$0 $$1 $$2
+    }else execute(if score rng rng_score matches 11){
+        macro witch_zombie $$0 $$1 $$2
+    }else execute(if score rng rng_score matches 12){
+        macro king_zombie $$0 $$1 $$2
+    }else execute(if score rng rng_score matches 13){
+        macro stray $$0 $$1 $$2
+    }else execute(if score rng rng_score matches 14){
+        macro creeper $$0 $$1 $$2
+    }else execute(if score rng rng_score matches 15){
+        macro pillager $$0 $$1 $$2
+    }else execute(if score rng rng_score matches 16){
+        macro husk $$0 $$1 $$2 
+    }
+
+    
+}
+
+macro tier_3{
+
+    macro tier_1 $$0 $$1 $$2
+    macro tier_2 $$0 $$1 $$2
+
+    execute(if score rng rng_score matches 17){
+        macro skeleton $$0 $$1 $$2
+    }
+    execute(if score rng rng_score matches 18){
+        macro yeti $$0 $$1 $$2
+    }
+    execute(if score rng rng_score matches 19){
+        macro arctic_creeper $$0 $$1 $$2
+    }
+    execute(if score rng rng_score matches 20){
+        macro pharoah $$0 $$1 $$2
+    }
+    execute(if score rng rng_score matches 21){
+        macro lightning_skeleton $$0 $$1 $$2
+    }
+    execute(if score rng rng_score matches 22){
+       macro lightning_creeper $$0 $$1 $$2
+    }
+    execute(if score rng rng_score matches 23){
+        macro lightning_zombie $$0 $$1 $$2
+    }
+
+}
+
+macro normal_zombie{
+    # Normal Zombie
+    summon zombie $$0 $$1 $$2 {PersistenceRequired:1b,DeathLootTable:"minecraft:bat",Tags:["zombie","nitwit"],CanPickUpLoot:1b} 
+}
+
+macro miner_zombie{
+    # Miner Zombie
+    summon zombie $$0 $$1 $$2 {PersistenceRequired:1b,CustomNameVisible:1b,DeathLootTable:"minecraft:bat",CanPickUpLoot:1b,Tags:["zombie","miner"],CustomName:'{"text":"Miner Zombie","color":"green"}',HandItems:[{id:"minecraft:iron_pickaxe",Count:1b},{}],HandDropChances:[1.000F,0.085F],Attributes:[{Name:"generic.follow_range",Base:100}]}
+}
+
+macro builder_zombie{
+    # Builder Zombie
+    summon zombie $$0 $$1 $$2 {PersistenceRequired:1b,DeathLootTable:"minecraft:bat",CustomNameVisible:1b,Tags:["zombie","builder"],CustomName:'{"text":"Builder Zombie","color":"green"}',HandItems:[{id:"minecraft:oak_planks",Count:1b},{}],HandDropChances:[1.000F,0.085F],Attributes:[{Name:"generic.follow_range",Base:50}],CanPickUpLoot:1b}
+}
+
+macro magma_zombie{ 
+    # Magma Zombie
+    summon zombie $$0 $$1 $$2 {PersistenceRequired:1b,CustomNameVisible:1b,DeathLootTable:"minecraft:bat",CustomName:'{"text":"Magma Zombie","color":"green"}',HandItems:[{id:'minecraft:blaze_rod',Count:1b,tag:{Enchantments:[{id:'minecraft:fire_aspect',lvl:1s}]}},{}],HandDropChances:[0.085F,0.085F],ActiveEffects:[{Id:12b,Amplifier:2b,Duration:999999,ShowParticles:0b}],Attributes:[{Name:"generic.follow_range",Base:50}]}
+}
+
+macro fast_zombie{
+    # Fast Zombie
+    summon zombie $$0 $$1 $$2 {PersistenceRequired:1b,CustomNameVisible:1b,DeathLootTable:"minecraft:bat",CustomName:'{"text":"Fast Zombie","color":"green"}',Attributes:[{Name:generic.movement_speed,Base:0.5},{Name:"generic.follow_range",Base:50}]}
+}
+
+macro strong_zombie{
+    # Strong Zombie
+    summon zombie $$0 $$1 $$2 {PersistenceRequired:1b,CustomNameVisible:1b,DeathLootTable:"minecraft:bat",CustomName:'{"text":"Strong Zombie","color":"green"}',Attributes:[{Name:generic.attack_damage,Base:6},{Name:"generic.follow_range",Base:50}]}
+}
+
+macro brute_zombie{
+    # Brute Zombie
+    summon zombie $$0 $$1 $$2 {PersistenceRequired:1b,CustomNameVisible:1b,DeathLootTable:"minecraft:bat",Health:40f,CustomName:'{"text":"Brute Zombie","color":"green"}',Attributes:[{Name:generic.max_health,Base:20},{Name:"generic.follow_range",Base:50}]}
+}
+
+macro mega_brute_zombie{
+    # Mega Brute Zombie
+    summon zombie $$0 $$1 $$2 {PersistenceRequired:1b,CustomNameVisible:1b,DeathLootTable:"minecraft:bat",Health:40f,CustomName:'{"text":"Mega Brute Zombie","color":"dark_green"}',Attributes:[{Name:generic.max_health,Base:20},{Name:generic.attack_damage,Base:6},{Name:"generic.follow_range",Base:50}]}
+}
+
+macro end_zombie{
+    # End Zombie
+    summon zombie $$0 $$1 $$2 {PersistenceRequired:1b,CustomNameVisible:1b,DeathLootTable:"minecraft:bat",CustomName:'{"text":"End Zombie","color":"green"}',HandItems:[{id:"minecraft:end_rod",Count:1b},{}],HandDropChances:[0.000F,0.085F],Attributes:[{Name:"generic.follow_range",Base:50}]}
+}
+
+macro witch_zombie{
+    # Witch Zombie
+    summon zombie $$0 $$1 $$2 {PersistenceRequired:1b,CustomNameVisible:1b,DeathLootTable:"minecraft:bat",CustomName:'{"text":"Witch Zombie","color":"green"}',HandItems:[{id:"minecraft:splash_potion",Count:1b},{}],HandDropChances:[0.000F,0.085F],Attributes:[{Name:generic.follow_range,Base:50}]}
+}
+
+macro skeleton{
+    # Skeleton
+    summon skeleton $$0 $$1 $$2 {DeathLootTable:"minecraft:bat",PersistenceRequired:1b,Passengers:[{id:"minecraft:zombie",DeathLootTable:"minecraft:bat",Tags:["pass"],Tags:["pass"],ActiveEffects:[{Id:14b,Amplifier:1b,Duration:999999,ShowParticles:0b}]}]}
+}
+
+macro stray{
+    # stray
+    summon stray $$0 $$1 $$2 {DeathLootTable:"minecraft:bat",PersistenceRequired:1b,Passengers:[{id:"minecraft:zombie",DeathLootTable:"minecraft:bat",Tags:["pass"],ActiveEffects:[{Id:14b,Amplifier:1b,Duration:999999,ShowParticles:0b}]}]}
+}
+
+macro creeper{
+    # creeper
+    summon creeper $$0 $$1 $$2 {DeathLootTable:"minecraft:bat",PersistenceRequired:1b,Passengers:[{id:"minecraft:zombie",DeathLootTable:"minecraft:bat",Tags:["pass"],ActiveEffects:[{Id:14b,Amplifier:1b,Duration:999999,ShowParticles:0b}]}]}
+}
+
+macro pillager{
+    # pillager
+    summon pillager $$0 $$1 $$2 {DeathLootTable:"minecraft:bat",PersistenceRequired:1b,Passengers:[{id:"minecraft:zombie",DeathLootTable:"minecraft:bat",Tags:["pass"],ActiveEffects:[{Id:14b,Amplifier:1b,Duration:999999,ShowParticles:0b}]}]}
+}
+
+macro husk{
+    # husk
+    summon husk $$0 $$1 $$2 {DeathLootTable:"minecraft:bat"}
+}
+
+macro king_zombie{
+    # King Zombie
+    summon zombie $$0 $$1 $$2 {PersistenceRequired:1b,CustomNameVisible:1b,DeathLootTable:"minecraft:bat",CanPickUpLoot:0b,Health:50f,Tags:["king"],CustomName:'{"text":"King Zombie","color":"red"}',ArmorItems:[{},{},{},{id:"minecraft:wooden_hoe",Count:1b,tag:{CustomModelData:110011}}],ArmorDropChances:[0.085F,0.085F,0.085F,0.000F]}
+}
+
+macro yeti{
+    # Yeti
+    summon husk $$0 $$1 $$2 {DeathLootTable:"minecraft:bat",PersistenceRequired:1b,CustomName:'{"text":"Yeti"}'}
+}
+
+macro arctic_creeper{
+    # Arctic Creeper
+    summon creeper $$0 $$1 $$2 {DeathLootTable:"minecraft:bat",PersistenceRequired:1b,CustomName:'{"text":"Arctic Creeper"}',Passengers:[{id:"minecraft:zombie",DeathLootTable:"minecraft:bat",Tags:["pass"],ActiveEffects:[{Id:14b,Amplifier:1b,Duration:999999,ShowParticles:0b}]}]}
+}
+
+macro pharoah{
+    # Pharaoh
+    summon stray $$0 $$1 $$2 {DeathLootTable:"minecraft:bat",PersistenceRequired:1b,CustomName:'{"text":"Pharaoh"}',HandItems:[{id:"minecraft:bow",Count:1b},{}],Passengers:[{id:"minecraft:zombie",DeathLootTable:"minecraft:bat",Tags:["pass"],ActiveEffects:[{Id:14b,Amplifier:1b,Duration:999999,ShowParticles:0b}]}]}
+}
+
+macro lightning_skeleton{
+    # Lightning Skeleton
+    summon skeleton $$0 $$1 $$2 {DeathLootTable:"minecraft:bat",Tags:["electric_pass"],PersistenceRequired:1b,CustomName:'{"text":"Lightning Skeleton"}',HandItems:[{id:"minecraft:bow",Count:1b},{}],Passengers:[{id:"minecraft:zombie",DeathLootTable:"minecraft:bat",Tags:["pass"],ActiveEffects:[{Id:14b,Amplifier:1b,Duration:999999,ShowParticles:0b}]}]}
+}
+
+macro lightning_creeper{
+     # Lightning Creeper
+    summon creeper $$0 $$1 $$2 {DeathLootTable:"minecraft:bat",Tags:["electric_pass"],PersistenceRequired:1b,CustomName:'{"text":"Lightning Creeper"}',HandItems:[{id:"minecraft:bow",Count:1b},{}],Passengers:[{id:"minecraft:zombie",DeathLootTable:"minecraft:bat",Tags:["pass"],ActiveEffects:[{Id:14b,Amplifier:1b,Duration:999999,ShowParticles:0b}]}]}
+}
+
+macro lightning_zombie{
+    # Lightning Zombie
+    summon zombie $$0 $$1 $$2 {DeathLootTable:"minecraft:bat",Tags:["electric_pass"],PersistenceRequired:1b,CustomName:'{"text":"Lightning Zombie"}'}
+}
