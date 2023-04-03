@@ -8,3 +8,5 @@ execute if entity @s[tag=music] run function mtnt.main:__generated__/execute/11
 execute if entity @s[tag=sun] run function mtnt.main:__generated__/execute/12
 execute if entity @s[tag=time] run function mtnt.main:__generated__/execute/13
 execute if entity @s[tag=invert] run function mtnt.main:__generated__/execute/14
+execute if entity @s[tag=lucky] run function mtnt.main:__generated__/execute/15
+execute if entity @s[tag=confetti] run function mtnt.main:__generated__/execute/16

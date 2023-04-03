@@ -1,10 +1,5 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-execute if entity @s[tag=tnt.dimension] run function mtnt.main:__generated__/execute/16
-execute if entity @s[tag=tnt.sandstorm] run function mtnt.main:__generated__/execute/23
-execute if entity @s[tag=tnt.acid_rain] run function mtnt.main:__generated__/execute/28
-execute if entity @s[tag=tnt.cloud] run function mtnt.main:__generated__/execute/33
-execute if entity @s[tag=tnt.music] run function mtnt.main:__generated__/execute/39
-execute if entity @s[tag=tnt.sun] run function mtnt.main:__generated__/execute/46
-execute if entity @s[tag=tnt.time] run function mtnt.main:__generated__/execute/53
-execute if entity @s[tag=tnt.invert] run function mtnt.main:__generated__/execute/59
+summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.lucky","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110009}}]}
+setblock ~ ~ ~ tnt
+tp @s ~ ~-600 ~

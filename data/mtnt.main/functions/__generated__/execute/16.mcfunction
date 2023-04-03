@@ -1,6 +1,5 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-scoreboard players set #execute LANG_MC_INTERNAL 0
-execute if entity @e[type=tnt,distance=..0.5] run function mtnt.main:__generated__/conditional/1
-scoreboard players set #execute LANG_MC_INTERNAL 0
-execute unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5] run function mtnt.main:__generated__/conditional/5
+summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.confetti","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110010}}]}
+setblock ~ ~ ~ tnt
+tp @s ~ ~-600 ~

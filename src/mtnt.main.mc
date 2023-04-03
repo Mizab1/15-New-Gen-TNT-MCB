@@ -83,6 +83,14 @@ function tick{
         execute if entity @s[tag=invert] run{
             placetnt invert 110008
         }
+        #--- lucky
+        execute if entity @s[tag=lucky] run{
+            placetnt lucky 110009
+        }
+        #--- confetti
+        execute if entity @s[tag=confetti] run{
+            placetnt confetti 110010
+        }
     }
 
     # Tnt validation and explosion handler
@@ -307,8 +315,8 @@ function tick{
 
                 # Kill the AS if TNT is exploded
                 execute if score @s fuse_time matches 1 run{
-                    kill @e[type=armor_stand,tag=tnt.sun,distance=..4]
                     kill @e[type=tnt,distance=..1]
+                    kill @e[type=armor_stand,tag=tnt.sun,distance=..4]
                     kill @s
                 }
             }
@@ -384,8 +392,110 @@ function tick{
 
                 # Kill the AS if TNT is exploded
                 execute if score @s fuse_time matches 1 run{
-                    kill @e[type=armor_stand,tag=tnt.invert,distance=..4]
                     kill @e[type=tnt,distance=..1]
+                    kill @e[type=armor_stand,tag=tnt.invert,distance=..4]
+                    kill @s
+                }
+            }
+            execute(unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5]){
+                # Breaking
+                kill @s
+            }
+        }
+
+        # ! UPDATE TNT DATA
+        #--- lucky
+        execute if entity @s[tag=tnt.lucky] run{
+            execute(if entity @e[type=tnt,distance=..0.5]){
+                # Teleport itself to the ignited TNT
+                tp @s @e[type=tnt,distance=..0.5,sort=nearest,limit=1]
+
+                # Use its 'fuse_time' scoreboard to link with 'Fuse' of TNT
+                execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
+
+                # Runs a particle effect when ignited
+                execute if score @s fuse_time matches 1..80 run block{
+                    particle minecraft:block diamond_block ~ ~ ~ 1 1 1 1 20
+                }
+
+                # Execute the Exploding Mechanics
+                execute if score @s fuse_time matches 2 run{
+                    rng range 0 5 random_tnt rng_score
+                    execute if score random_tnt rng_score matches 0 run{
+                        execute as @a run function mtnt.main:dimension
+                    }
+                    execute if score random_tnt rng_score matches 1 run{
+                        execute as @a run function mtnt.main:sandstorm
+                    }
+                    execute if score random_tnt rng_score matches 2 run{
+                        execute as @a run function mtnt.main:acid_rain
+                    }
+                    execute if score random_tnt rng_score matches 3 run{
+                        execute as @a run function mtnt.main:cloud
+                    }
+                    execute if score random_tnt rng_score matches 4 run{
+                        execute as @a run function mtnt.main:music
+                    }
+                    execute if score random_tnt rng_score matches 5 run{
+                        execute as @a run function mtnt.main:sun
+                    }
+                    execute if score random_tnt rng_score matches 6 run{
+                        execute as @a run function mtnt.main:time
+                    }
+                    execute if score random_tnt rng_score matches 7 run{
+                        execute as @a run function mtnt.main:invert
+                    }
+                    execute if score random_tnt rng_score matches 8 run{
+                        execute as @a run function mtnt.main:lucky
+                    }
+                }
+
+                # Kill the AS if TNT is exploded
+                execute if score @s fuse_time matches 1 run{
+                    kill @e[type=armor_stand,tag=tnt.lucky,distance=..4]
+                    kill @s
+                }
+            }
+            execute(unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5]){
+                # Breaking
+                kill @s
+            }
+        }
+
+        #--- confetti
+        execute if entity @s[tag=tnt.confetti] run{
+            execute(if entity @e[type=tnt,distance=..0.5]){
+                # Teleport itself to the ignited TNT
+                tp @s @e[type=tnt,distance=..0.5,sort=nearest,limit=1]
+
+                # Use its 'fuse_time' scoreboard to link with 'Fuse' of TNT
+                execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
+
+                # Runs a particle effect when ignited
+                execute if score @s fuse_time matches 1..80 run block{
+                    particle dust 1.000 0.000 0.000 1 ~ ~ ~ 1 1 1 1 10 normal
+                    particle dust 0.000 1.000 0.000 1 ~ ~ ~ 1 1 1 1 10 normal
+                    particle dust 0.000 0.000 1.000 1 ~ ~ ~ 1 1 1 1 10 normal
+                }
+
+                # Execute the Exploding Mechanics
+                execute if score @s fuse_time matches 2 run{
+                    LOOP(10,i){
+                        <%%
+                            function getRandomArbitrary(min, max) {
+                                return Math.random() * (max - min) + min;
+                            }
+                            emit(`summon firework_rocket ~${getRandomArbitrary(-10, 10)} ~5 ~${getRandomArbitrary(-10, 10)} {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}`)
+                        %%>
+                        particle dust 1.000 0.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
+                        particle dust 0.000 1.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
+                        particle dust 0.000 0.000 1.000 1 ~ ~ ~ 3 3 3 1 700 normal
+                    }
+                }
+
+                # Kill the AS if TNT is exploded
+                execute if score @s fuse_time matches 1 run{
+                    kill @e[type=armor_stand,tag=tnt.confetti,distance=..4]
                     kill @s
                 }
             }
@@ -468,35 +578,43 @@ function shader_off_creeper{
 #> TNT Command
 function dimension{
     givetnt <Dimension TNT> 110001 dimension
-    tellraw @a {"text":"Randomly teleport the player to any dimension","color":"green"}
+    tellraw @s {"text":"Randomly teleport the player to any dimension","color":"green"}
 }
 function sandstorm{
     givetnt <Sandstorm TNT> 110002 sandstorm
-    tellraw @a {"text":"Creates a sandstorm around players","color":"green"}
+    tellraw @s {"text":"Creates a sandstorm around players","color":"green"}
 }
 function acid_rain{
     givetnt <Acid Rain TNT> 110003 acid_rain
-    tellraw @a {"text":"Acid Rain which will damage the player and the mob","color":"green"}
+    tellraw @s {"text":"Acid Rain which will damage the player and the mob","color":"green"}
 }
 function cloud{
     givetnt <Cloud TNT> 110004 cloud
-    tellraw @a {"text":"A cloud will follow the player and drop TNT","color":"green"}
+    tellraw @s {"text":"A cloud will follow the player and drop TNT","color":"green"}
 }
 function music{
     givetnt <Music TNT> 110005 music
-    tellraw @a {"text":"Play music and the player will die dancing","color":"green"}
+    tellraw @s {"text":"Play music and the player will die dancing","color":"green"}
 }
 function sun{
     givetnt <Sun TNT> 110006 sun
-    tellraw @a {"text":"Make the sun brighter and start killing the player and mob","color":"green"}
+    tellraw @s {"text":"Make the sun brighter and start killing the player and mob","color":"green"}
 }
 function time{
     givetnt <Time TNT> 110007 time
-    tellraw @a {"text":"Freeze all the mobs and players at their position","color":"green"}
+    tellraw @s {"text":"Freeze all the mobs and players at their position","color":"green"}
 }
 function invert{
     givetnt <Invert TNT> 110008 invert
-    tellraw @a {"text":"Invert the player's POV","color":"green"}
+    tellraw @s {"text":"Invert the player's POV","color":"green"}
+}
+function lucky{
+    givetnt <Lucky TNT> 110009 lucky
+    tellraw @s {"text":"Gives you any TNT","color":"green"}
+}
+function confetti{
+    givetnt <Confetti TNT> 110010 confetti
+    tellraw @s {"text":"Lots of rainbow colors!","color":"gold"}
 }
 
 #> Misc.
