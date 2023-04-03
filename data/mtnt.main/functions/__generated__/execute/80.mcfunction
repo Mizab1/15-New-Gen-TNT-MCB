@@ -22,3 +22,8 @@ execute if score random_tnt rng_score matches 5 run execute as @a run function m
 execute if score random_tnt rng_score matches 6 run execute as @a run function mtnt.main:time
 execute if score random_tnt rng_score matches 7 run execute as @a run function mtnt.main:invert
 execute if score random_tnt rng_score matches 8 run execute as @a run function mtnt.main:lucky
+execute if score random_tnt rng_score matches 9 run execute as @a run function mtnt.main:confetti
+execute if score random_tnt rng_score matches 10 run execute as @a run function mtnt.main:laser
+execute if score random_tnt rng_score matches 11 run execute as @a run function mtnt.main:puffcursion
+execute if score random_tnt rng_score matches 12 run execute as @a run function mtnt.main:glitch
+execute if score random_tnt rng_score matches 13 run execute as @a run function mtnt.main:ninja

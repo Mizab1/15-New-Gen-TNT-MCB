@@ -1,4 +1,3 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-kill @e[type=armor_stand,tag=tnt.time,distance=..4]
-kill @s
+particle dust 0 0 0 1 ~ ~ ~ 1 1 1 1 50 normal

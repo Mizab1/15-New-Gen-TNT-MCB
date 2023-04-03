@@ -126,6 +126,10 @@ function tick{
         execute if entity @s[tag=glitch] run{
             placetnt glitch 110013
         }
+        #--- ninja
+        execute if entity @s[tag=ninja] run{
+            placetnt ninja 110014
+        }
     }
 
     # Tnt validation and explosion handler
@@ -483,6 +487,21 @@ function tick{
                     execute if score random_tnt rng_score matches 8 run{
                         execute as @a run function mtnt.main:lucky
                     }
+                    execute if score random_tnt rng_score matches 9 run{
+                        execute as @a run function mtnt.main:confetti
+                    }
+                    execute if score random_tnt rng_score matches 10 run{
+                        execute as @a run function mtnt.main:laser
+                    }
+                    execute if score random_tnt rng_score matches 11 run{
+                        execute as @a run function mtnt.main:puffcursion
+                    }
+                    execute if score random_tnt rng_score matches 12 run{
+                        execute as @a run function mtnt.main:glitch
+                    }
+                    execute if score random_tnt rng_score matches 13 run{
+                        execute as @a run function mtnt.main:ninja
+                    }
                 }
 
                 # Kill the AS if TNT is exploded
@@ -665,6 +684,41 @@ function tick{
                 kill @s
             }
         }
+
+        
+        #--- ninja
+        execute if entity @s[tag=tnt.ninja] run{
+            execute(if entity @e[type=tnt,distance=..0.5]){
+                # Teleport itself to the ignited TNT
+                tp @s @e[type=tnt,distance=..0.5,sort=nearest,limit=1]
+
+                # Use its 'fuse_time' scoreboard to link with 'Fuse' of TNT
+                execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
+
+                # Runs a particle effect when ignited
+                execute if score @s fuse_time matches 1..80 run block{
+                    particle dust 0 0 0 1 ~ ~ ~ 1 1 1 1 50 normal
+                }
+
+                # Execute the Exploding Mechanics
+                execute if score @s fuse_time matches 2 run{
+                    LOOP(5,i){
+                       summon zombie ~ ~ ~ {DeathLootTable:"minecraft:bat",Tags:["ninja"],CustomName:'{"text":"Ninja"}',ArmorItems:[{},{},{},{id:"minecraft:leather_helmet",Count:1b,tag:{display:{color:0}}}],Attributes:[{Name:generic.movement_speed,Base:1},{Name:generic.attack_knockback,Base:5}]} 
+                    }
+                }
+
+                # Kill the AS if TNT is exploded
+                execute if score @s fuse_time matches 1 run{
+                    kill @e[type=tnt, distance=..1]
+                    kill @e[type=armor_stand,tag=tnt.ninja,distance=..4]
+                    kill @s
+                }
+            }
+            execute(unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5]){
+                # Breaking
+                kill @s
+            }
+        }
     }
 }
 function shader_on_spider{
@@ -788,6 +842,10 @@ function puffcursion{
 function glitch{
     givetnt <Glitch TNT> 110013 glitch
     tellraw @s {"text":"Introduce movement glitch to everyone","color":"gold"}
+}
+function ninja{
+    givetnt <Ninja TNT> 110014 ninja
+    tellraw @s {"text":"Summon ninja which will try to kill the player","color":"gold"}
 }
 
 #> Misc.

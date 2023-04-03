@@ -6,4 +6,4 @@ execute as @a[tag=cloud_following] at @s run tp @e[type=armor_stand, tag=cloud, 
 execute as @e[tag=dancing] at @s run function mtnt.main:__generated__/execute/6
 execute as @e[type=pufferfish, tag=puffcursion] at @s run function mtnt.main:__generated__/execute/7
 execute as @e[type=endermite, tag=tnt.endermite] at @s run function mtnt.main:__generated__/execute/11
-execute as @e[type=armor_stand, tag=tnt.as] at @s run function mtnt.main:__generated__/execute/25
+execute as @e[type=armor_stand, tag=tnt.as] at @s run function mtnt.main:__generated__/execute/26

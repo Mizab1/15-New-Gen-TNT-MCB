@@ -1,4 +1,4 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-kill @e[type=armor_stand,tag=tnt.sandstorm,distance=..4]
-kill @s
+tag @a[tag=!master] add in_sandstorm
+schedule function mtnt.main:__generated__/schedule/0 15s replace

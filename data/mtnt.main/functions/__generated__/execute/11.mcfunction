@@ -13,3 +13,4 @@ execute if entity @s[tag=confetti] run function mtnt.main:__generated__/execute/
 execute if entity @s[tag=laser] run function mtnt.main:__generated__/execute/22
 execute if entity @s[tag=puffcursion] run function mtnt.main:__generated__/execute/23
 execute if entity @s[tag=glitch] run function mtnt.main:__generated__/execute/24
+execute if entity @s[tag=ninja] run function mtnt.main:__generated__/execute/25
