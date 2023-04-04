@@ -1,3 +1,3 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-execute as @a[tag=!master] at @s run tp @s ~-3.8314398966522645 ~0.539712012936238 ~-0.5300150149954996
+execute as @a[tag=!master] at @s run tp @s ~3.354842058930741 ~-0.6599963186647049 ~-2.0513623202048348

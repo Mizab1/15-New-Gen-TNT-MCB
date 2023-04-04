@@ -198,13 +198,13 @@ function tick{
                 execute if score @s fuse_time matches 1 run{
                     rng range 0 3 dimension_rng rng_score
                     execute(if score dimension_rng rng_score matches 0){
-                        execute in minecraft:overworld run tp @a[tag=!master] 20 100 30
+                        execute in minecraft:overworld run tp @a[tag=!master] 286 135 400
                     } 
                     execute(if score dimension_rng rng_score matches 1){
                         execute in minecraft:the_end run tp @a[tag=!master] 20 100 30
                     } 
                     execute(if score dimension_rng rng_score matches 2){
-                        execute in minecraft:the_nether run tp @a[tag=!master] 20 100 30
+                        execute in minecraft:the_nether run tp @a[tag=!master] 66 65 30
                     }
                     kill @e[type=armor_stand,tag=tnt.dimension,distance=..4]
                     kill @s
@@ -384,6 +384,8 @@ function tick{
 
                 # Execute the Exploding Mechanics
                 execute if score @s fuse_time matches 2 run{
+                    time set noon
+                    tellraw @a [{"text":"The sun is now very bright","color":"red"}]
                     execute as @a[tag=!master] at @s run{
                         function mtnt.main:shader_on_spider
                     }
@@ -394,8 +396,8 @@ function tick{
                             function mtnt.main:shader_off_spider
                         }
                         scoreboard players set acid_rain private 0
+                        time set midnight
                     }
-                    tellraw @a [{"text":"The sun is now very bright","color":"red"}]
                 }
 
                 # Kill the AS if TNT is exploded
