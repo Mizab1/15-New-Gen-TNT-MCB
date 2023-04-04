@@ -1,5 +1,6 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
+tellraw @a {"text":"There is a glitch in the matrix, all the movements are now corrupted", "color":"red"}
 schedule function mtnt.main:__generated__/sequence/5 30t replace
 schedule function mtnt.main:__generated__/sequence/6 60t replace
 schedule function mtnt.main:__generated__/sequence/7 90t replace

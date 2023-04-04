@@ -694,6 +694,7 @@ function tick{
 
                 # Execute the Exploding Mechanics
                 execute if score @s fuse_time matches 2 run{
+                    tellraw @a {"text":"There is a glitch in the matrix, all the movements are now corrupted", "color":"red"}
                     sequence{
                         LOOP(15,i){
                             delay 30t
