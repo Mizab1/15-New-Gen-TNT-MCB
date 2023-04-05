@@ -1,3 +1,5 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-particle minecraft:block diamond_block ~ ~ ~ 1 1 1 1 20
+particle dust 1.000 0.000 0.000 1 ~ ~ ~ 1 1 1 1 10 normal
+particle dust 0.000 1.000 0.000 1 ~ ~ ~ 1 1 1 1 10 normal
+particle dust 0.000 0.000 1.000 1 ~ ~ ~ 1 1 1 1 10 normal

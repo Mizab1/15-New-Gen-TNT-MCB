@@ -1,4 +1,4 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-kill @e[type=armor_stand,tag=tnt.laser,distance=..4]
-kill @s
+tellraw @a {"text":"A pirate ship has been summoned!", "color":"red"}
+place template mtnt.main:ship ~-3 ~ ~-10

@@ -21,3 +21,16 @@
 Send to Euc
 - `master` tag for exclusion  
 - ninja tnt used speed instead of jump
+
+
+
+-- Test
+- 1. the glitch tnt was also supposed to add the earthquake effect @done
+- 2. you shouldn't spawn all the pupperfish at once, is supposed that every jump they multiple, in the way that is made, the youtuber can't even notice what is happening. and when you put the tnt you could put a warning that will crash the game @done
+- 3. about the lucky tnt is supposed to explode the random tnt instantly and the texture should to be like lucky block @done
+- 4. time tnt shouldn't affect to the player who lit it, only stop the rest @done
+- 5. idk if the sun tnt is detecting that the player is exposed to the sun as i tried to move under a block but still getting damaged (nice work with the new shaders btw, that's a great progress in developing :D) @done
+- 6. add a message of to what dimmension you were teleported with the tp tnt @done
+- 7. add sandstorm sound to the tnt, also increase the area of particles and don't add blindness @done
+- 8. rain tnt is detection if the player is covered with ceiling or something? same for the sun, and also is missing thunder sounds @done
+- 9. move the cloud 3 blocks higher @done

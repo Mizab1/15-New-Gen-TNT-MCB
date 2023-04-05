@@ -1,4 +1,3 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-kill @a[tag=on_shader_undo]
-gamerule doImmediateRespawn false
+execute as @a at @s run tp @s ~ ~ ~ ~1.94 ~1.58

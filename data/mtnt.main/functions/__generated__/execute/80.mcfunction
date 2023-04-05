@@ -1,6 +1,5 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-effect give @e[type=#minecraft:all_living, tag=!master, distance=..40] slowness 15 30 true
-effect give @e[type=#minecraft:ded_mobs, tag=!master, distance=..40] slowness 15 30 true
-execute as @a[tag=!master] at @s run particle minecraft:elder_guardian ~ ~ ~ 0 0 0 1 1
-tellraw @a [{"text":"The time is now stopped","color":"gold"}]
+tag @a[tag=is_igniter] remove is_igniter
+kill @e[type=armor_stand,tag=tnt.time,distance=..4]
+kill @s
