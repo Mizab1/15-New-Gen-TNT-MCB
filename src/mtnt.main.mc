@@ -198,13 +198,13 @@ function tick{
                 execute if score @s fuse_time matches 1 run{
                     rng range 0 3 dimension_rng rng_score
                     execute(if score dimension_rng rng_score matches 0){
-                        execute in minecraft:overworld run tp @a[tag=!master] 286 135 400
+                        execute in minecraft:overworld run tp @a[tag=!master] 66 79 17
                     } 
                     execute(if score dimension_rng rng_score matches 1){
                         execute in minecraft:the_end run tp @a[tag=!master] 20 100 30
                     } 
                     execute(if score dimension_rng rng_score matches 2){
-                        execute in minecraft:the_nether run tp @a[tag=!master] 66 65 30
+                        execute in minecraft:the_nether run tp @a[tag=!master] 47 59 11
                     }
                     kill @e[type=armor_stand,tag=tnt.dimension,distance=..4]
                     kill @s
