@@ -514,72 +514,72 @@ function tick{
                     execute(if score random_tnt rng_score matches 0){
                         # execute as @a run function mtnt.main:dimension
                         summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.dimension","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110001}}]}
-                        tellraw @s {"text":"The output of lucky TNT is Dimension TNT"}
+                        tellraw @a {"text":"The output of lucky TNT is Dimension TNT"}
                         kill @s
                     }else execute(if score random_tnt rng_score matches 1){
                         # execute as @a run function mtnt.main:sandstorm
                         summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.sandstorm","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110002}}]}
-                        tellraw @s {"text":"The output of lucky TNT is Sandstorm TNT"}
+                        tellraw @a {"text":"The output of lucky TNT is Sandstorm TNT"}
                         kill @s
                     }else execute(if score random_tnt rng_score matches 2){
                         # execute as @a run function mtnt.main:acid_rain
                         summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.acid_rain","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110003}}]}
-                        tellraw @s {"text":"The output of lucky TNT is Acid Rain TNT"}
+                        tellraw @a {"text":"The output of lucky TNT is Acid Rain TNT"}
                         kill @s
                     }else execute(if score random_tnt rng_score matches 3){
                         # execute as @a run function mtnt.main:cloud
                         summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.cloud","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110004}}]}
-                        tellraw @s {"text":"The output of lucky TNT is Cloud TNT"}
+                        tellraw @a {"text":"The output of lucky TNT is Cloud TNT"}
                         kill @s
                     }else execute(if score random_tnt rng_score matches 4){
                         # execute as @a run function mtnt.main:music
                         summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.music","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110005}}]}
-                        tellraw @s {"text":"The output of lucky TNT is Music TNT"}
+                        tellraw @a {"text":"The output of lucky TNT is Music TNT"}
                         kill @s
                     }else execute(if score random_tnt rng_score matches 5){
                         # execute as @a run function mtnt.main:sun
                         summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.sun","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110006}}]}
-                        tellraw @s {"text":"The output of lucky TNT is Sun TNT"}
+                        tellraw @a {"text":"The output of lucky TNT is Sun TNT"}
                         kill @s
                     }else execute(if score random_tnt rng_score matches 6){
                         # execute as @a run function mtnt.main:time
                         summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.time","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110007}}]}
-                        tellraw @s {"text":"The output of lucky TNT is Time TNT"}
+                        tellraw @a {"text":"The output of lucky TNT is Time TNT"}
                         kill @s
                     }else execute(if score random_tnt rng_score matches 7){
                         # execute as @a run function mtnt.main:invert
                         summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.invert","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110008}}]}
-                        tellraw @s {"text":"The output of lucky TNT is Invert TNT"}
+                        tellraw @a {"text":"The output of lucky TNT is Invert TNT"}
                         kill @s
                     }else execute(if score random_tnt rng_score matches 8){
                         # execute as @a run function mtnt.main:confetti
                         summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.confetti","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110010}}]}
-                        tellraw @s {"text":"The output of lucky TNT is Confetti TNT"}
+                        tellraw @a {"text":"The output of lucky TNT is Confetti TNT"}
                         kill @s
                     }else execute(if score random_tnt rng_score matches 9){
                         # execute as @a run function mtnt.main:laser
                         summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.laser","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110011}}]}
-                        tellraw @s {"text":"The output of lucky TNT is Laser TNT"}
+                        tellraw @a {"text":"The output of lucky TNT is Laser TNT"}
                         kill @s
                     }else execute(if score random_tnt rng_score matches 10){
                         # execute as @a run function mtnt.main:puffcursion
                         summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.puffcursion","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110012}}]}
-                        tellraw @s {"text":"The output of lucky TNT is Puffcursion TNT"}
+                        tellraw @a {"text":"The output of lucky TNT is Puffcursion TNT"}
                         kill @s
                     }else execute(if score random_tnt rng_score matches 11){
                         # execute as @a run function mtnt.main:glitch
                         summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.glitch","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110013}}]}
-                        tellraw @s {"text":"The output of lucky TNT is Glitch TNT"}
+                        tellraw @a {"text":"The output of lucky TNT is Glitch TNT"}
                         kill @s
                     }else execute(if score random_tnt rng_score matches 12){
                         # execute as @a run function mtnt.main:ninja
                         summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.ninja","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110014}}]}
-                        tellraw @s {"text":"The output of lucky TNT is Ninja TNT"}
+                        tellraw @a {"text":"The output of lucky TNT is Ninja TNT"}
                         kill @s
                     }else execute(if score random_tnt rng_score matches 13){
                         # execute as @a run function mtnt.main:pirate
                         summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.pirate","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110015}}]}
-                        tellraw @s {"text":"The output of lucky TNT is Pirate TNT"}
+                        tellraw @a {"text":"The output of lucky TNT is Pirate TNT"}
                         kill @s
                     }
                 }

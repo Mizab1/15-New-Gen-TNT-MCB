@@ -16,7 +16,7 @@ schedule function mtnt.main:__generated__/sequence/16 360t replace
 schedule function mtnt.main:__generated__/sequence/17 390t replace
 schedule function mtnt.main:__generated__/sequence/18 420t replace
 schedule function mtnt.main:__generated__/sequence/19 450t replace
-execute as @a at @s run tp @s ~ ~ ~ ~1.99 ~-0.2
+execute as @a at @s run tp @s ~ ~ ~ ~-1.68 ~-1.03
 schedule function mtnt.main:__generated__/sequence/21 2t replace
 schedule function mtnt.main:__generated__/sequence/22 4t replace
 schedule function mtnt.main:__generated__/sequence/23 6t replace
