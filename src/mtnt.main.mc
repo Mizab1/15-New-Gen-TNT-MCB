@@ -166,6 +166,7 @@ function tick{
         #--- puffcursion
         execute if entity @s[tag=puffcursion] run{
             placetnt puffcursion 110012
+            tellraw @a {"text":"Puffcursion TNT might crash the game. Proceed with caution", "color":"red"}
         }
         #--- glitch
         execute if entity @s[tag=glitch] run{

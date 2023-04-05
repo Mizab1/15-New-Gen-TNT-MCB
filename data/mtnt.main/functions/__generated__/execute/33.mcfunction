@@ -3,3 +3,4 @@
 summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.puffcursion","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110012}}]}
 setblock ~ ~ ~ tnt
 tp @s ~ ~-600 ~
+tellraw @a {"text":"Puffcursion TNT might crash the game. Proceed with caution", "color":"red"}
