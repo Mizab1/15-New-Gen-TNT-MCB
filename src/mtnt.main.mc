@@ -26,7 +26,10 @@ function load{
 }
 clock 30t{
     execute(if score acid_rain private matches 1){
-        execute as @e[type=#minecraft:all_living, tag=!master] run{
+        execute as @a[tag=!master] at @s if blocks ~ ~ ~ ~ ~30 ~ ~ 200 ~ masked run{
+            effect give @s instant_damage 1 0 true
+        }
+        execute as @e[type=#minecraft:all_living, type=!player] run{
             effect give @s instant_damage 1 0 true
         } 
         execute as @e[type=#minecraft:ded_mobs] run{
