@@ -6,6 +6,7 @@ function load{
     scoreboard objectives add LANG_MC_INTERNAL dummy
 
     scoreboard objectives add fuse_time dummy
+    scoreboard objectives add cloud_fuse_time dummy
     scoreboard objectives add rng_score dummy
     scoreboard objectives add private dummy
 
@@ -35,11 +36,6 @@ clock 30t{
         execute as @e[type=#minecraft:ded_mobs] run{
             effect give @s instant_health 1 0 true
         } 
-    }
-
-    # cloud throwing tnt
-    execute at @e[type=armor_stand, tag=cloud] run{
-        summon tnt ~ ~ ~ {Fuse:40}
     }
 
     # cannon firing
@@ -98,6 +94,10 @@ clock 10t{
     execute as @e[type=armor_stand, tag=cannon] at @s run{
         tp @s ~ ~ ~ facing entity @a[distance=..30, limit=1, sort=nearest]
     }
+    # music TNT
+    execute as @e[type=zombie, tag=dancing] at @s if score dance_move private matches 1 run{
+        data merge entity @s {Motion:[0.0,0.3,0.0]}
+    }
 }
 clock 5t{
     execute as @e[type=armor_stand, tag=sat_firing] at @s run block{
@@ -113,19 +113,25 @@ function tick{
     # sandstorm
     execute as @a[tag=in_sandstorm] at @s run{
         playsound minecraft:block.big_dripleaf.tilt_down master @s
-        # particle cloud ~ ~ ~ 2 2 2 1 200 normal
-        particle block red_sand ~ ~1 ~ 4 4 4 1 2000 normal
+        # particle block red_sand ~ ~1 ~ 4 4 4 1 2000 normal
         # effect give @s minecraft:blindness 3 10 true
-        # effect give @s minecraft:darkness 3 10 true
+        effect give @s minecraft:darkness 3 10 true
+        particle cloud ~ ~ ~ 2 2 2 1 20 normal
+        # particle minecraft:falling_spore_blossom ~ ~1 ~ 3 3 3 1 1000
+        particle minecraft:white_ash ~ ~1 ~ 3 3 3 1 5000
+        particle minecraft:crimson_spore ~ ~1 ~ 3 3 3 1 5000
         effect give @s minecraft:slowness 3 3 true
     }
     # cloud
     execute as @a[tag=cloud_following] at @s run{
         tp @e[type=armor_stand, tag=cloud, limit=1, sort=nearest] ~ ~8 ~
     }
+    # execute as @e[type=armor_stand, tag=cloud] store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
     # music
-    execute as @e[tag=dancing] at @s run{
-        tp @s ~ ~ ~ ~5 ~
+    execute as @e[type=zombie, tag=dancing] at @s run{
+        execute(if score dance_move private matches 0){
+            tp @s ~ ~ ~ ~5 ~
+        }
         particle minecraft:note ~ ~2 ~ 0 0 0 1 1
     }
     #Time TNT
@@ -332,9 +338,20 @@ function tick{
                         summon armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["cloud"],ArmorItems:[{},{},{},{id:"minecraft:wooden_hoe",Count:1b,tag:{CustomModelData:101013}}]}
                     }
                     tag @a[tag=!master] add cloud_following
-                    schedule 15s replace{
-                        tag @a[tag=cloud_following] remove cloud_following
-                        kill @e[type=armor_stand, tag=cloud]
+                    sequence{
+                        LOOP(12,i){
+                            delay 31t
+                            execute at @e[type=armor_stand, tag=cloud] run{
+                                summon creeper ~ ~ ~ {Silent:1b,ExplosionRadius:<%i + 1 * 2%>b,Fuse:29,ignited:1b,ActiveEffects:[{Id:14,Amplifier:1b,Duration:25}]}
+                                summon tnt ~ ~ ~ {Fuse:30}
+                            }
+                            <%%
+                                if(i == 11){
+                                    emit(`tag @a[tag=cloud_following] remove cloud_following`)
+                                    emit(`kill @e[type=armor_stand, tag=cloud]`)
+                                }
+                            %%>
+                        }
                     }
                 }
 
@@ -366,11 +383,19 @@ function tick{
 
                 # Execute the Exploding Mechanics
                 execute if score @s fuse_time matches 2 run{
-                    execute as @e[type=#minecraft:all_living, type=!player, distance=..20] run{
-                        tag @s add dancing
-                    }
+                    scoreboard players set dance_move private 0
+                    summon zombie ~ ~ ~ {DeathLootTable:"minecraft:bat", Silent:1b,Tags:["npcs", "dancing"],CustomName:'{"text":"NPC 1"}',ArmorItems:[{},{},{},{id:"minecraft:leather_helmet",Count:1b,tag:{display:{color:4014663}}}]}
+                    summon zombie ~ ~ ~ {DeathLootTable:"minecraft:bat", Silent:1b,Tags:["npcs", "dancing"],CustomName:'{"text":"NPC 2"}',ArmorItems:[{},{},{},{id:"minecraft:leather_helmet",Count:1b,tag:{display:{color:4014663}}}]}
+                    summon zombie ~ ~ ~ {DeathLootTable:"minecraft:bat", Silent:1b,Tags:["npcs", "dancing"],CustomName:'{"text":"NPC 3"}',ArmorItems:[{},{},{},{id:"minecraft:leather_helmet",Count:1b,tag:{display:{color:4014663}}}]}
+                    
                     playsound minecraft:music_disc.pigstep master @a ~ ~ ~ 1 1.5
-                    schedule 20s replace{
+                    spreadplayers ~ ~ 3 3 false @e[type=minecraft:zombie, tag=npcs]
+
+                    sequence{
+                        delay 15s
+                        scoreboard players set dance_move private 1
+                        delay 8s
+                        scoreboard players set dance_move private 0
                         stopsound @a
                         execute as @a[tag=!master] run{
                             tellraw @a [{"selector":"@s"},{"text":" Died of Dancing","color":"red"}]
@@ -382,6 +407,7 @@ function tick{
 
                 # Kill the AS if TNT is exploded
                 execute if score @s fuse_time matches 1 run{
+                    kill @e[type=tnt,distance=..1]
                     kill @e[type=armor_stand,tag=tnt.music,distance=..4]
                     kill @s
                 }
@@ -631,7 +657,7 @@ function tick{
                         kill @e[type=tnt, distance=..1]
                         kill @s
                     }else execute(if score random_tnt rng_score matches 17){
-                        fill ~5 ~-1 ~5 ~-5 ~-1 ~-5 minecraft:diamond_block
+                        fill ~5 ~-1 ~5 ~-5 ~-1 ~-5 minecraft:emerald_block
                         tellraw @a {"text":"The output of lucky TNT is Emerald Blocks"}
                         kill @e[type=tnt, distance=..1]
                         kill @s

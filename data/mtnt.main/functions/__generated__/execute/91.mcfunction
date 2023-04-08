@@ -1,30 +1,306 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-scoreboard players operation temp0 rng = state rng
-scoreboard players operation temp0 rng *= a rng
-scoreboard players operation temp0 rng += c rng
-scoreboard players operation temp0 rng %= m rng
-scoreboard players operation state rng = temp0 rng
-scoreboard players operation random_tnt rng_score = temp0 rng
-scoreboard players operation random_tnt rng_score /= #100000 rng
-scoreboard players set min rng 0
-scoreboard players set max rng 14
-scoreboard players operation size rng = max rng
-scoreboard players operation size rng -= min rng
-scoreboard players operation random_tnt rng_score %= size rng
-scoreboard players operation random_tnt rng_score += min rng
-scoreboard players set #execute LANG_MC_INTERNAL 0
-execute if score random_tnt rng_score matches 0 run function mtnt.main:__generated__/conditional/24
-execute if score #execute LANG_MC_INTERNAL matches 0 if score random_tnt rng_score matches 1 run function mtnt.main:__generated__/conditional/25
-execute if score #execute LANG_MC_INTERNAL matches 0 if score random_tnt rng_score matches 2 run function mtnt.main:__generated__/conditional/26
-execute if score #execute LANG_MC_INTERNAL matches 0 if score random_tnt rng_score matches 3 run function mtnt.main:__generated__/conditional/27
-execute if score #execute LANG_MC_INTERNAL matches 0 if score random_tnt rng_score matches 4 run function mtnt.main:__generated__/conditional/28
-execute if score #execute LANG_MC_INTERNAL matches 0 if score random_tnt rng_score matches 5 run function mtnt.main:__generated__/conditional/29
-execute if score #execute LANG_MC_INTERNAL matches 0 if score random_tnt rng_score matches 6 run function mtnt.main:__generated__/conditional/30
-execute if score #execute LANG_MC_INTERNAL matches 0 if score random_tnt rng_score matches 7 run function mtnt.main:__generated__/conditional/31
-execute if score #execute LANG_MC_INTERNAL matches 0 if score random_tnt rng_score matches 8 run function mtnt.main:__generated__/conditional/32
-execute if score #execute LANG_MC_INTERNAL matches 0 if score random_tnt rng_score matches 9 run function mtnt.main:__generated__/conditional/33
-execute if score #execute LANG_MC_INTERNAL matches 0 if score random_tnt rng_score matches 10 run function mtnt.main:__generated__/conditional/34
-execute if score #execute LANG_MC_INTERNAL matches 0 if score random_tnt rng_score matches 11 run function mtnt.main:__generated__/conditional/35
-execute if score #execute LANG_MC_INTERNAL matches 0 if score random_tnt rng_score matches 12 run function mtnt.main:__generated__/conditional/36
-execute if score #execute LANG_MC_INTERNAL matches 0 if score random_tnt rng_score matches 13 run function mtnt.main:__generated__/conditional/37
+effect give @e[type=#minecraft:all_living, tag=!master, distance=..40] speed 15 10 true
+effect give @e[type=#minecraft:ded_mobs, tag=!master, distance=..40] speed 15 10 true
+execute as @a[tag=!master] at @s run particle minecraft:elder_guardian ~ ~ ~ 0 0 0 1 1
+tellraw @a [{"text":"The time is sped up","color":"gold"}]
+time add 10s
+schedule function mtnt.main:__generated__/sequence/17 1t replace
+schedule function mtnt.main:__generated__/sequence/18 2t replace
+schedule function mtnt.main:__generated__/sequence/19 3t replace
+schedule function mtnt.main:__generated__/sequence/20 4t replace
+schedule function mtnt.main:__generated__/sequence/21 5t replace
+schedule function mtnt.main:__generated__/sequence/22 6t replace
+schedule function mtnt.main:__generated__/sequence/23 7t replace
+schedule function mtnt.main:__generated__/sequence/24 8t replace
+schedule function mtnt.main:__generated__/sequence/25 9t replace
+schedule function mtnt.main:__generated__/sequence/26 10t replace
+schedule function mtnt.main:__generated__/sequence/27 11t replace
+schedule function mtnt.main:__generated__/sequence/28 12t replace
+schedule function mtnt.main:__generated__/sequence/29 13t replace
+schedule function mtnt.main:__generated__/sequence/30 14t replace
+schedule function mtnt.main:__generated__/sequence/31 15t replace
+schedule function mtnt.main:__generated__/sequence/32 16t replace
+schedule function mtnt.main:__generated__/sequence/33 17t replace
+schedule function mtnt.main:__generated__/sequence/34 18t replace
+schedule function mtnt.main:__generated__/sequence/35 19t replace
+schedule function mtnt.main:__generated__/sequence/36 20t replace
+schedule function mtnt.main:__generated__/sequence/37 21t replace
+schedule function mtnt.main:__generated__/sequence/38 22t replace
+schedule function mtnt.main:__generated__/sequence/39 23t replace
+schedule function mtnt.main:__generated__/sequence/40 24t replace
+schedule function mtnt.main:__generated__/sequence/41 25t replace
+schedule function mtnt.main:__generated__/sequence/42 26t replace
+schedule function mtnt.main:__generated__/sequence/43 27t replace
+schedule function mtnt.main:__generated__/sequence/44 28t replace
+schedule function mtnt.main:__generated__/sequence/45 29t replace
+schedule function mtnt.main:__generated__/sequence/46 30t replace
+schedule function mtnt.main:__generated__/sequence/47 31t replace
+schedule function mtnt.main:__generated__/sequence/48 32t replace
+schedule function mtnt.main:__generated__/sequence/49 33t replace
+schedule function mtnt.main:__generated__/sequence/50 34t replace
+schedule function mtnt.main:__generated__/sequence/51 35t replace
+schedule function mtnt.main:__generated__/sequence/52 36t replace
+schedule function mtnt.main:__generated__/sequence/53 37t replace
+schedule function mtnt.main:__generated__/sequence/54 38t replace
+schedule function mtnt.main:__generated__/sequence/55 39t replace
+schedule function mtnt.main:__generated__/sequence/56 40t replace
+schedule function mtnt.main:__generated__/sequence/57 41t replace
+schedule function mtnt.main:__generated__/sequence/58 42t replace
+schedule function mtnt.main:__generated__/sequence/59 43t replace
+schedule function mtnt.main:__generated__/sequence/60 44t replace
+schedule function mtnt.main:__generated__/sequence/61 45t replace
+schedule function mtnt.main:__generated__/sequence/62 46t replace
+schedule function mtnt.main:__generated__/sequence/63 47t replace
+schedule function mtnt.main:__generated__/sequence/64 48t replace
+schedule function mtnt.main:__generated__/sequence/65 49t replace
+schedule function mtnt.main:__generated__/sequence/66 50t replace
+schedule function mtnt.main:__generated__/sequence/67 51t replace
+schedule function mtnt.main:__generated__/sequence/68 52t replace
+schedule function mtnt.main:__generated__/sequence/69 53t replace
+schedule function mtnt.main:__generated__/sequence/70 54t replace
+schedule function mtnt.main:__generated__/sequence/71 55t replace
+schedule function mtnt.main:__generated__/sequence/72 56t replace
+schedule function mtnt.main:__generated__/sequence/73 57t replace
+schedule function mtnt.main:__generated__/sequence/74 58t replace
+schedule function mtnt.main:__generated__/sequence/75 59t replace
+schedule function mtnt.main:__generated__/sequence/76 60t replace
+schedule function mtnt.main:__generated__/sequence/77 61t replace
+schedule function mtnt.main:__generated__/sequence/78 62t replace
+schedule function mtnt.main:__generated__/sequence/79 63t replace
+schedule function mtnt.main:__generated__/sequence/80 64t replace
+schedule function mtnt.main:__generated__/sequence/81 65t replace
+schedule function mtnt.main:__generated__/sequence/82 66t replace
+schedule function mtnt.main:__generated__/sequence/83 67t replace
+schedule function mtnt.main:__generated__/sequence/84 68t replace
+schedule function mtnt.main:__generated__/sequence/85 69t replace
+schedule function mtnt.main:__generated__/sequence/86 70t replace
+schedule function mtnt.main:__generated__/sequence/87 71t replace
+schedule function mtnt.main:__generated__/sequence/88 72t replace
+schedule function mtnt.main:__generated__/sequence/89 73t replace
+schedule function mtnt.main:__generated__/sequence/90 74t replace
+schedule function mtnt.main:__generated__/sequence/91 75t replace
+schedule function mtnt.main:__generated__/sequence/92 76t replace
+schedule function mtnt.main:__generated__/sequence/93 77t replace
+schedule function mtnt.main:__generated__/sequence/94 78t replace
+schedule function mtnt.main:__generated__/sequence/95 79t replace
+schedule function mtnt.main:__generated__/sequence/96 80t replace
+schedule function mtnt.main:__generated__/sequence/97 81t replace
+schedule function mtnt.main:__generated__/sequence/98 82t replace
+schedule function mtnt.main:__generated__/sequence/99 83t replace
+schedule function mtnt.main:__generated__/sequence/100 84t replace
+schedule function mtnt.main:__generated__/sequence/101 85t replace
+schedule function mtnt.main:__generated__/sequence/102 86t replace
+schedule function mtnt.main:__generated__/sequence/103 87t replace
+schedule function mtnt.main:__generated__/sequence/104 88t replace
+schedule function mtnt.main:__generated__/sequence/105 89t replace
+schedule function mtnt.main:__generated__/sequence/106 90t replace
+schedule function mtnt.main:__generated__/sequence/107 91t replace
+schedule function mtnt.main:__generated__/sequence/108 92t replace
+schedule function mtnt.main:__generated__/sequence/109 93t replace
+schedule function mtnt.main:__generated__/sequence/110 94t replace
+schedule function mtnt.main:__generated__/sequence/111 95t replace
+schedule function mtnt.main:__generated__/sequence/112 96t replace
+schedule function mtnt.main:__generated__/sequence/113 97t replace
+schedule function mtnt.main:__generated__/sequence/114 98t replace
+schedule function mtnt.main:__generated__/sequence/115 99t replace
+schedule function mtnt.main:__generated__/sequence/116 100t replace
+schedule function mtnt.main:__generated__/sequence/117 101t replace
+schedule function mtnt.main:__generated__/sequence/118 102t replace
+schedule function mtnt.main:__generated__/sequence/119 103t replace
+schedule function mtnt.main:__generated__/sequence/120 104t replace
+schedule function mtnt.main:__generated__/sequence/121 105t replace
+schedule function mtnt.main:__generated__/sequence/122 106t replace
+schedule function mtnt.main:__generated__/sequence/123 107t replace
+schedule function mtnt.main:__generated__/sequence/124 108t replace
+schedule function mtnt.main:__generated__/sequence/125 109t replace
+schedule function mtnt.main:__generated__/sequence/126 110t replace
+schedule function mtnt.main:__generated__/sequence/127 111t replace
+schedule function mtnt.main:__generated__/sequence/128 112t replace
+schedule function mtnt.main:__generated__/sequence/129 113t replace
+schedule function mtnt.main:__generated__/sequence/130 114t replace
+schedule function mtnt.main:__generated__/sequence/131 115t replace
+schedule function mtnt.main:__generated__/sequence/132 116t replace
+schedule function mtnt.main:__generated__/sequence/133 117t replace
+schedule function mtnt.main:__generated__/sequence/134 118t replace
+schedule function mtnt.main:__generated__/sequence/135 119t replace
+schedule function mtnt.main:__generated__/sequence/136 120t replace
+schedule function mtnt.main:__generated__/sequence/137 121t replace
+schedule function mtnt.main:__generated__/sequence/138 122t replace
+schedule function mtnt.main:__generated__/sequence/139 123t replace
+schedule function mtnt.main:__generated__/sequence/140 124t replace
+schedule function mtnt.main:__generated__/sequence/141 125t replace
+schedule function mtnt.main:__generated__/sequence/142 126t replace
+schedule function mtnt.main:__generated__/sequence/143 127t replace
+schedule function mtnt.main:__generated__/sequence/144 128t replace
+schedule function mtnt.main:__generated__/sequence/145 129t replace
+schedule function mtnt.main:__generated__/sequence/146 130t replace
+schedule function mtnt.main:__generated__/sequence/147 131t replace
+schedule function mtnt.main:__generated__/sequence/148 132t replace
+schedule function mtnt.main:__generated__/sequence/149 133t replace
+schedule function mtnt.main:__generated__/sequence/150 134t replace
+schedule function mtnt.main:__generated__/sequence/151 135t replace
+schedule function mtnt.main:__generated__/sequence/152 136t replace
+schedule function mtnt.main:__generated__/sequence/153 137t replace
+schedule function mtnt.main:__generated__/sequence/154 138t replace
+schedule function mtnt.main:__generated__/sequence/155 139t replace
+schedule function mtnt.main:__generated__/sequence/156 140t replace
+schedule function mtnt.main:__generated__/sequence/157 141t replace
+schedule function mtnt.main:__generated__/sequence/158 142t replace
+schedule function mtnt.main:__generated__/sequence/159 143t replace
+schedule function mtnt.main:__generated__/sequence/160 144t replace
+schedule function mtnt.main:__generated__/sequence/161 145t replace
+schedule function mtnt.main:__generated__/sequence/162 146t replace
+schedule function mtnt.main:__generated__/sequence/163 147t replace
+schedule function mtnt.main:__generated__/sequence/164 148t replace
+schedule function mtnt.main:__generated__/sequence/165 149t replace
+schedule function mtnt.main:__generated__/sequence/166 150t replace
+schedule function mtnt.main:__generated__/sequence/167 151t replace
+schedule function mtnt.main:__generated__/sequence/168 152t replace
+schedule function mtnt.main:__generated__/sequence/169 153t replace
+schedule function mtnt.main:__generated__/sequence/170 154t replace
+schedule function mtnt.main:__generated__/sequence/171 155t replace
+schedule function mtnt.main:__generated__/sequence/172 156t replace
+schedule function mtnt.main:__generated__/sequence/173 157t replace
+schedule function mtnt.main:__generated__/sequence/174 158t replace
+schedule function mtnt.main:__generated__/sequence/175 159t replace
+schedule function mtnt.main:__generated__/sequence/176 160t replace
+schedule function mtnt.main:__generated__/sequence/177 161t replace
+schedule function mtnt.main:__generated__/sequence/178 162t replace
+schedule function mtnt.main:__generated__/sequence/179 163t replace
+schedule function mtnt.main:__generated__/sequence/180 164t replace
+schedule function mtnt.main:__generated__/sequence/181 165t replace
+schedule function mtnt.main:__generated__/sequence/182 166t replace
+schedule function mtnt.main:__generated__/sequence/183 167t replace
+schedule function mtnt.main:__generated__/sequence/184 168t replace
+schedule function mtnt.main:__generated__/sequence/185 169t replace
+schedule function mtnt.main:__generated__/sequence/186 170t replace
+schedule function mtnt.main:__generated__/sequence/187 171t replace
+schedule function mtnt.main:__generated__/sequence/188 172t replace
+schedule function mtnt.main:__generated__/sequence/189 173t replace
+schedule function mtnt.main:__generated__/sequence/190 174t replace
+schedule function mtnt.main:__generated__/sequence/191 175t replace
+schedule function mtnt.main:__generated__/sequence/192 176t replace
+schedule function mtnt.main:__generated__/sequence/193 177t replace
+schedule function mtnt.main:__generated__/sequence/194 178t replace
+schedule function mtnt.main:__generated__/sequence/195 179t replace
+schedule function mtnt.main:__generated__/sequence/196 180t replace
+schedule function mtnt.main:__generated__/sequence/197 181t replace
+schedule function mtnt.main:__generated__/sequence/198 182t replace
+schedule function mtnt.main:__generated__/sequence/199 183t replace
+schedule function mtnt.main:__generated__/sequence/200 184t replace
+schedule function mtnt.main:__generated__/sequence/201 185t replace
+schedule function mtnt.main:__generated__/sequence/202 186t replace
+schedule function mtnt.main:__generated__/sequence/203 187t replace
+schedule function mtnt.main:__generated__/sequence/204 188t replace
+schedule function mtnt.main:__generated__/sequence/205 189t replace
+schedule function mtnt.main:__generated__/sequence/206 190t replace
+schedule function mtnt.main:__generated__/sequence/207 191t replace
+schedule function mtnt.main:__generated__/sequence/208 192t replace
+schedule function mtnt.main:__generated__/sequence/209 193t replace
+schedule function mtnt.main:__generated__/sequence/210 194t replace
+schedule function mtnt.main:__generated__/sequence/211 195t replace
+schedule function mtnt.main:__generated__/sequence/212 196t replace
+schedule function mtnt.main:__generated__/sequence/213 197t replace
+schedule function mtnt.main:__generated__/sequence/214 198t replace
+schedule function mtnt.main:__generated__/sequence/215 199t replace
+schedule function mtnt.main:__generated__/sequence/216 200t replace
+schedule function mtnt.main:__generated__/sequence/217 201t replace
+schedule function mtnt.main:__generated__/sequence/218 202t replace
+schedule function mtnt.main:__generated__/sequence/219 203t replace
+schedule function mtnt.main:__generated__/sequence/220 204t replace
+schedule function mtnt.main:__generated__/sequence/221 205t replace
+schedule function mtnt.main:__generated__/sequence/222 206t replace
+schedule function mtnt.main:__generated__/sequence/223 207t replace
+schedule function mtnt.main:__generated__/sequence/224 208t replace
+schedule function mtnt.main:__generated__/sequence/225 209t replace
+schedule function mtnt.main:__generated__/sequence/226 210t replace
+schedule function mtnt.main:__generated__/sequence/227 211t replace
+schedule function mtnt.main:__generated__/sequence/228 212t replace
+schedule function mtnt.main:__generated__/sequence/229 213t replace
+schedule function mtnt.main:__generated__/sequence/230 214t replace
+schedule function mtnt.main:__generated__/sequence/231 215t replace
+schedule function mtnt.main:__generated__/sequence/232 216t replace
+schedule function mtnt.main:__generated__/sequence/233 217t replace
+schedule function mtnt.main:__generated__/sequence/234 218t replace
+schedule function mtnt.main:__generated__/sequence/235 219t replace
+schedule function mtnt.main:__generated__/sequence/236 220t replace
+schedule function mtnt.main:__generated__/sequence/237 221t replace
+schedule function mtnt.main:__generated__/sequence/238 222t replace
+schedule function mtnt.main:__generated__/sequence/239 223t replace
+schedule function mtnt.main:__generated__/sequence/240 224t replace
+schedule function mtnt.main:__generated__/sequence/241 225t replace
+schedule function mtnt.main:__generated__/sequence/242 226t replace
+schedule function mtnt.main:__generated__/sequence/243 227t replace
+schedule function mtnt.main:__generated__/sequence/244 228t replace
+schedule function mtnt.main:__generated__/sequence/245 229t replace
+schedule function mtnt.main:__generated__/sequence/246 230t replace
+schedule function mtnt.main:__generated__/sequence/247 231t replace
+schedule function mtnt.main:__generated__/sequence/248 232t replace
+schedule function mtnt.main:__generated__/sequence/249 233t replace
+schedule function mtnt.main:__generated__/sequence/250 234t replace
+schedule function mtnt.main:__generated__/sequence/251 235t replace
+schedule function mtnt.main:__generated__/sequence/252 236t replace
+schedule function mtnt.main:__generated__/sequence/253 237t replace
+schedule function mtnt.main:__generated__/sequence/254 238t replace
+schedule function mtnt.main:__generated__/sequence/255 239t replace
+schedule function mtnt.main:__generated__/sequence/256 240t replace
+schedule function mtnt.main:__generated__/sequence/257 241t replace
+schedule function mtnt.main:__generated__/sequence/258 242t replace
+schedule function mtnt.main:__generated__/sequence/259 243t replace
+schedule function mtnt.main:__generated__/sequence/260 244t replace
+schedule function mtnt.main:__generated__/sequence/261 245t replace
+schedule function mtnt.main:__generated__/sequence/262 246t replace
+schedule function mtnt.main:__generated__/sequence/263 247t replace
+schedule function mtnt.main:__generated__/sequence/264 248t replace
+schedule function mtnt.main:__generated__/sequence/265 249t replace
+schedule function mtnt.main:__generated__/sequence/266 250t replace
+schedule function mtnt.main:__generated__/sequence/267 251t replace
+schedule function mtnt.main:__generated__/sequence/268 252t replace
+schedule function mtnt.main:__generated__/sequence/269 253t replace
+schedule function mtnt.main:__generated__/sequence/270 254t replace
+schedule function mtnt.main:__generated__/sequence/271 255t replace
+schedule function mtnt.main:__generated__/sequence/272 256t replace
+schedule function mtnt.main:__generated__/sequence/273 257t replace
+schedule function mtnt.main:__generated__/sequence/274 258t replace
+schedule function mtnt.main:__generated__/sequence/275 259t replace
+schedule function mtnt.main:__generated__/sequence/276 260t replace
+schedule function mtnt.main:__generated__/sequence/277 261t replace
+schedule function mtnt.main:__generated__/sequence/278 262t replace
+schedule function mtnt.main:__generated__/sequence/279 263t replace
+schedule function mtnt.main:__generated__/sequence/280 264t replace
+schedule function mtnt.main:__generated__/sequence/281 265t replace
+schedule function mtnt.main:__generated__/sequence/282 266t replace
+schedule function mtnt.main:__generated__/sequence/283 267t replace
+schedule function mtnt.main:__generated__/sequence/284 268t replace
+schedule function mtnt.main:__generated__/sequence/285 269t replace
+schedule function mtnt.main:__generated__/sequence/286 270t replace
+schedule function mtnt.main:__generated__/sequence/287 271t replace
+schedule function mtnt.main:__generated__/sequence/288 272t replace
+schedule function mtnt.main:__generated__/sequence/289 273t replace
+schedule function mtnt.main:__generated__/sequence/290 274t replace
+schedule function mtnt.main:__generated__/sequence/291 275t replace
+schedule function mtnt.main:__generated__/sequence/292 276t replace
+schedule function mtnt.main:__generated__/sequence/293 277t replace
+schedule function mtnt.main:__generated__/sequence/294 278t replace
+schedule function mtnt.main:__generated__/sequence/295 279t replace
+schedule function mtnt.main:__generated__/sequence/296 280t replace
+schedule function mtnt.main:__generated__/sequence/297 281t replace
+schedule function mtnt.main:__generated__/sequence/298 282t replace
+schedule function mtnt.main:__generated__/sequence/299 283t replace
+schedule function mtnt.main:__generated__/sequence/300 284t replace
+schedule function mtnt.main:__generated__/sequence/301 285t replace
+schedule function mtnt.main:__generated__/sequence/302 286t replace
+schedule function mtnt.main:__generated__/sequence/303 287t replace
+schedule function mtnt.main:__generated__/sequence/304 288t replace
+schedule function mtnt.main:__generated__/sequence/305 289t replace
+schedule function mtnt.main:__generated__/sequence/306 290t replace
+schedule function mtnt.main:__generated__/sequence/307 291t replace
+schedule function mtnt.main:__generated__/sequence/308 292t replace
+schedule function mtnt.main:__generated__/sequence/309 293t replace
+schedule function mtnt.main:__generated__/sequence/310 294t replace
+schedule function mtnt.main:__generated__/sequence/311 295t replace
+schedule function mtnt.main:__generated__/sequence/312 296t replace
+schedule function mtnt.main:__generated__/sequence/313 297t replace
+schedule function mtnt.main:__generated__/sequence/314 298t replace
+schedule function mtnt.main:__generated__/sequence/315 299t replace

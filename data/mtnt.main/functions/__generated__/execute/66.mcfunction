@@ -1,5 +1,4 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-execute as @e[type=#minecraft:all_living, type=!player, distance=..20] run tag @s add dancing
-playsound minecraft:music_disc.pigstep master @a ~ ~ ~ 1 1.5
-schedule function mtnt.main:__generated__/schedule/3 20s replace
+summon creeper ~ ~ ~ {Silent:1b,ExplosionRadius:6b,Fuse:29,ignited:1b,ActiveEffects:[{Id:14,Amplifier:1b,Duration:25}]}
+summon tnt ~ ~ ~ {Fuse:30}

@@ -1,5 +1,7 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-execute as @a[tag=!master] at @s run function mtnt.main:shader_on_creeper
-schedule function mtnt.main:__generated__/schedule/5 15s replace
-tellraw @a [{"text":"The screen is now inverted","color":"green"}]
+time set noon
+tellraw @a [{"text":"The sun is now very bright","color":"red"}]
+execute as @a[tag=!master] at @s run function mtnt.main:shader_on_spider
+scoreboard players set acid_rain private 1
+schedule function mtnt.main:__generated__/schedule/2 15s replace

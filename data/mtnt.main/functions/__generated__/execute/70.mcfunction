@@ -1,6 +1,4 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-scoreboard players set #execute LANG_MC_INTERNAL 0
-execute if entity @e[type=tnt,distance=..0.5] run function mtnt.main:__generated__/conditional/19
-scoreboard players set #execute LANG_MC_INTERNAL 0
-execute unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5] run function mtnt.main:__generated__/conditional/20
+summon creeper ~ ~ ~ {Silent:1b,ExplosionRadius:10b,Fuse:29,ignited:1b,ActiveEffects:[{Id:14,Amplifier:1b,Duration:25}]}
+summon tnt ~ ~ ~ {Fuse:30}

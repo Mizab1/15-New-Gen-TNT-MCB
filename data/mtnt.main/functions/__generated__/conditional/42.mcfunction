@@ -1,7 +1,6 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-fill ~5 ~-1 ~5 ~-5 ~-1 ~-5 minecraft:diamond_block
+execute positioned ~-10 ~20 ~-10 run function mtnt.main:__generated__/execute/105
 tellraw @a {"text":"The output of lucky TNT is Diamonds Blocks"}
-kill @e[type=tnt, distance=..1]
 kill @s
 scoreboard players set #execute LANG_MC_INTERNAL 1

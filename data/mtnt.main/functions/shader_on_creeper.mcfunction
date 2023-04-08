@@ -6,5 +6,5 @@ summon creeper ~ ~ ~ {NoAI:1b, Tags:["toggle_shader"]}
 spectate @e[tag=toggle_shader, limit=1]
 tag @s add on_shader
 gamerule doImmediateRespawn true
-schedule function mtnt.main:__generated__/sequence/564 10t replace
-schedule function mtnt.main:__generated__/sequence/565 20t replace
+schedule function mtnt.main:__generated__/sequence/580 10t replace
+schedule function mtnt.main:__generated__/sequence/581 20t replace

@@ -2,6 +2,7 @@
 
 scoreboard objectives add LANG_MC_INTERNAL dummy
 scoreboard objectives add fuse_time dummy
+scoreboard objectives add cloud_fuse_time dummy
 scoreboard objectives add rng_score dummy
 scoreboard objectives add private dummy
 scoreboard objectives add pos_x1 dummy

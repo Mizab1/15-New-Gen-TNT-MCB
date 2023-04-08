@@ -2,4 +2,4 @@
 
 kill @e[type=item_frame, tag=hat_if]
 setblock 328 160 223 air
-execute as @a at @s run function mtnt.main:__generated__/execute/141
+execute as @a at @s run function mtnt.main:__generated__/execute/152

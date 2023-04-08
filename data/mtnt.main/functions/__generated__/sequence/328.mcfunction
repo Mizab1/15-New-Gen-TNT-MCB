@@ -1,3 +1,4 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-execute as @a[tag=!master] at @s run tp @s ~2.4203020873394117 ~1.5710173800120288 ~2.2930317137087535
+tellraw @a {"text":"[Satellite] Target Destroyed, Teleporting...", "color":"green"}
+execute as @e[type=armor_stand, tag=sat] at @s run tp @s ~33.60259679819117 ~ ~-6.973776466566584

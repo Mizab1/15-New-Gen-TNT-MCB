@@ -1,3 +1,4 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-execute as @a[tag=!master] at @s run tp @s ~3.8693972455134578 ~-0.26374164555647184 ~-2.191039642508521
+execute as @e[type=armor_stand, tag=sat] at @s run function mtnt.main:__generated__/execute/125
+tellraw @a {"text":"[Satellite] Target Acquired", "color":"green"}

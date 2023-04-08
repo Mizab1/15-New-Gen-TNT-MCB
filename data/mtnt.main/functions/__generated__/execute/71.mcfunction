@@ -1,7 +1,4 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-time set noon
-tellraw @a [{"text":"The sun is now very bright","color":"red"}]
-execute as @a[tag=!master] at @s run function mtnt.main:shader_on_spider
-scoreboard players set acid_rain private 1
-schedule function mtnt.main:__generated__/schedule/4 15s replace
+summon creeper ~ ~ ~ {Silent:1b,ExplosionRadius:11b,Fuse:29,ignited:1b,ActiveEffects:[{Id:14,Amplifier:1b,Duration:25}]}
+summon tnt ~ ~ ~ {Fuse:30}

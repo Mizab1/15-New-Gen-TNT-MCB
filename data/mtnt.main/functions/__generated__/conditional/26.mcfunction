@@ -1,6 +1,6 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.dimension","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110001}}]}
-tellraw @a {"text":"The output of lucky TNT is Dimension TNT"}
-kill @s
+tp @s @e[type=tnt,distance=..0.5,sort=nearest,limit=1]
+execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
+execute if score @s fuse_time matches 10 run function mtnt.main:__generated__/execute/103
 scoreboard players set #execute LANG_MC_INTERNAL 1

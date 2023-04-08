@@ -1,3 +1,3 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-time add 10s
+execute as @a at @s run tp @s ~ ~ ~ ~1.6 ~0.74
