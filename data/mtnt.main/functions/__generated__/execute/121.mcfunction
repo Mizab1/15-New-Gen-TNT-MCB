@@ -1,4 +1,6 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-tellraw @a {"text":"A pirate ship has been summoned!", "color":"red"}
-place template mtnt.main:ship ~-3 ~ ~-10
+scoreboard players set #execute LANG_MC_INTERNAL 0
+execute if entity @e[type=tnt,distance=..0.5] run function mtnt.main:__generated__/conditional/59
+scoreboard players set #execute LANG_MC_INTERNAL 0
+execute unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5] run function mtnt.main:__generated__/conditional/60

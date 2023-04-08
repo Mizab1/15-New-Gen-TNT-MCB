@@ -1,8 +1,7 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-tp @s @e[type=tnt,distance=..0.5,sort=nearest,limit=1]
-execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
-execute if score @s fuse_time matches 1..80 run function mtnt.main:__generated__/block/11
-execute if score @s fuse_time matches 2 run function mtnt.main:__generated__/execute/112
-execute if score @s fuse_time matches 1 run function mtnt.main:__generated__/execute/113
+summon item ~ ~1 ~ {Motion:[0.1,0.3,-0.2],Item:{id:"minecraft:netherite_chestplate",Count:1b,tag:{display:{Name:'{"text":"OP Armor","color":"gold","italic":false}'},Enchantments:[{id:"minecraft:protection",lvl:5s},{id:"minecraft:fire_protection",lvl:5s},{id:"minecraft:blast_protection",lvl:5s},{id:"minecraft:projectile_protection",lvl:5s},{id:"minecraft:respiration",lvl:5s},{id:"minecraft:aqua_affinity",lvl:5s},{id:"minecraft:thorns",lvl:5s},{id:"minecraft:unbreaking",lvl:5s}]}}}
+tellraw @a {"text":"The output of lucky TNT is OP Chestplate"}
+kill @e[type=tnt, distance=..1]
+kill @s
 scoreboard players set #execute LANG_MC_INTERNAL 1

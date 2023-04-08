@@ -1,6 +1,4 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-scoreboard players set #execute LANG_MC_INTERNAL 0
-execute if entity @e[type=tnt,distance=..0.5] run function mtnt.main:__generated__/conditional/45
-scoreboard players set #execute LANG_MC_INTERNAL 0
-execute unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5] run function mtnt.main:__generated__/conditional/46
+tellraw @a {"text":"[Satellite] Firing", "color":"green"}
+summon fireball ~ ~-0.35 ~ {ExplosionPower:15b,power:[0.0,-0.2,0.0],Item:{id:"minecraft:end_crystal",Count:1b}}

@@ -10,4 +10,5 @@ summon pufferfish ~1.9203405733007322 ~1 ~-0.5588309963978517 {Tags:["puffcursio
 summon pufferfish ~1.5078045086866092 ~1 ~1.3139731974375781 {Tags:["puffcursion_child_4", "puffcursion"]}
 summon pufferfish ~-0.2910000676172271 ~1 ~1.9787164932467636 {Tags:["puffcursion_child_4", "puffcursion"]}
 summon pufferfish ~-1.8222605237693539 ~1 ~0.8242369704835132 {Tags:["puffcursion_child_4", "puffcursion"]}
+execute as @a at @s run particle dust 1.000 0.918 0.180 1 ~ ~5 ~ 0 0 0 1 1000000000 normal
 scoreboard players set #execute LANG_MC_INTERNAL 1

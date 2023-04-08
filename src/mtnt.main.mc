@@ -81,16 +81,30 @@ clock 30t{
             LOOP(10, i){
                 summon pufferfish ~<%Math.cos(i)*2%> ~1 ~<%Math.sin(i)*2%> {Tags:["puffcursion_child_4", "puffcursion"]}
             }
+            execute as @a at @s run particle dust 1.000 0.918 0.180 1 ~ ~5 ~ 0 0 0 1 1000000000 normal 
+        }else execute(if entity @s[tag=puffcursion_child_4]){
+            LOOP(10, i){
+                summon pufferfish ~<%Math.cos(i)*2%> ~1 ~<%Math.sin(i)*2%> {Tags:["puffcursion_child_5", "puffcursion"]}
+            }
+        }else execute(if entity @s[tag=puffcursion_child_5]){
+            LOOP(10, i){
+                summon pufferfish ~<%Math.cos(i)*2%> ~1 ~<%Math.sin(i)*2%> {Tags:["puffcursion_child_6", "puffcursion"]}
+            }
         }
     }
 }
 clock 10t{
-    execute as @e[type=armor_stand, tag=sat_firing] at @s run{
-        particle dust 1.000 0.918 0.180 2 ~ ~-4.5 ~ 0 3 0 1 100 normal
-    }
     #cannon
     execute as @e[type=armor_stand, tag=cannon] at @s run{
         tp @s ~ ~ ~ facing entity @a[distance=..30, limit=1, sort=nearest]
+    }
+}
+clock 5t{
+    execute as @e[type=armor_stand, tag=sat_firing] at @s run block{
+        name particle_test
+        LOOP(360,i){
+            particle dust 1.000 0.918 0.180 1 ~<%Math.sin(i)%> ~-<%i/30%> ~<%Math.cos(i)%> 0 0 0 1 1 normal
+        }
     }
 }
 function tick{
@@ -439,12 +453,19 @@ function tick{
 
                 # Execute the Exploding Mechanics
                 execute if score @s fuse_time matches 2 run{
-                    effect give @e[type=#minecraft:all_living, tag=!master, tag=!is_igniter, distance=..40] slowness 15 30 true
-                    effect give @e[type=#minecraft:ded_mobs, tag=!master, tag=!is_igniter, distance=..40] slowness 15 30 true
-                    execute as @a[tag=!master, tag=!is_igniter] at @s run{
+                    # is_igniter: tag for exclusion
+                    effect give @e[type=#minecraft:all_living, tag=!master, distance=..40] speed 15 10 true
+                    effect give @e[type=#minecraft:ded_mobs, tag=!master, distance=..40] speed 15 10 true
+                    execute as @a[tag=!master] at @s run{
                         particle minecraft:elder_guardian ~ ~ ~ 0 0 0 1 1
                     }
-                    tellraw @a [{"text":"The time is now stopped","color":"gold"}]
+                    tellraw @a [{"text":"The time is sped up","color":"gold"}]
+                    sequence{
+                        LOOP(15*20,i){
+                            time add 10s
+                            delay 1t
+                        }
+                    }
                 }
 
                 # Kill the AS if TNT is exploded
@@ -512,8 +533,8 @@ function tick{
                 execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
 
                 # Execute the Exploding Mechanics
-                execute if score @s fuse_time matches 40 run{
-                    rng range 0 14 random_tnt rng_score
+                execute if score @s fuse_time matches 10 run{
+                    rng range 0 28 random_tnt rng_score
                     execute(if score random_tnt rng_score matches 0){
                         # execute as @a run function mtnt.main:dimension
                         summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.dimension","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110001}}]}
@@ -584,6 +605,94 @@ function tick{
                         summon armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:["tnt.pirate","tnt.as"],ArmorItems:[{},{},{},{id:"minecraft:endermite_spawn_egg",Count:1b,tag:{CustomModelData:110015}}]}
                         tellraw @a {"text":"The output of lucky TNT is Pirate TNT"}
                         kill @s
+                    }else execute(if score random_tnt rng_score matches 14){
+                        execute positioned ~-10 ~20 ~-10 run{
+                            LOOP(20,i){
+                                LOOP(20,j){
+                                    summon item ~<%i%> ~ ~<%j%> {Item:{id:"minecraft:diamond",Count:1b}}
+                                }
+                            }
+                        }
+                        tellraw @a {"text":"The output of lucky TNT is Diamonds"}
+                        kill @s
+                    }else execute(if score random_tnt rng_score matches 15){
+                        execute positioned ~-10 ~20 ~-10 run{
+                            LOOP(20,i){
+                                LOOP(20,j){
+                                    summon item ~<%i%> ~ ~<%j%> {Item:{id:"minecraft:diamond_block",Count:1b}}
+                                }
+                            }
+                        }
+                        tellraw @a {"text":"The output of lucky TNT is Diamonds Blocks"}
+                        kill @s
+                    }else execute(if score random_tnt rng_score matches 16){
+                        fill ~5 ~-1 ~5 ~-5 ~-1 ~-5 minecraft:diamond_block
+                        tellraw @a {"text":"The output of lucky TNT is Diamonds Blocks"}
+                        kill @e[type=tnt, distance=..1]
+                        kill @s
+                    }else execute(if score random_tnt rng_score matches 17){
+                        fill ~5 ~-1 ~5 ~-5 ~-1 ~-5 minecraft:diamond_block
+                        tellraw @a {"text":"The output of lucky TNT is Emerald Blocks"}
+                        kill @e[type=tnt, distance=..1]
+                        kill @s
+                    }else execute(if score random_tnt rng_score matches 18){
+                        summon item ~ ~1 ~ {Motion:[0.1,0.3,-0.2],Item:{id:"minecraft:netherite_helmet",Count:1b,tag:{display:{Name:'{"text":"OP Armor","color":"gold","italic":false}'},Enchantments:[{id:"minecraft:protection",lvl:5s},{id:"minecraft:fire_protection",lvl:5s},{id:"minecraft:blast_protection",lvl:5s},{id:"minecraft:projectile_protection",lvl:5s},{id:"minecraft:respiration",lvl:5s},{id:"minecraft:aqua_affinity",lvl:5s},{id:"minecraft:thorns",lvl:5s},{id:"minecraft:unbreaking",lvl:5s}]}}}
+                        tellraw @a {"text":"The output of lucky TNT is OP Helmet"}
+                        kill @e[type=tnt, distance=..1]
+                        kill @s
+                    }else execute(if score random_tnt rng_score matches 19){
+                        summon item ~ ~1 ~ {Motion:[0.1,0.3,-0.2],Item:{id:"minecraft:netherite_chestplate",Count:1b,tag:{display:{Name:'{"text":"OP Armor","color":"gold","italic":false}'},Enchantments:[{id:"minecraft:protection",lvl:5s},{id:"minecraft:fire_protection",lvl:5s},{id:"minecraft:blast_protection",lvl:5s},{id:"minecraft:projectile_protection",lvl:5s},{id:"minecraft:respiration",lvl:5s},{id:"minecraft:aqua_affinity",lvl:5s},{id:"minecraft:thorns",lvl:5s},{id:"minecraft:unbreaking",lvl:5s}]}}}
+                        tellraw @a {"text":"The output of lucky TNT is OP Chestplate"}
+                        kill @e[type=tnt, distance=..1]
+                        kill @s
+                    }else execute(if score random_tnt rng_score matches 20){
+                        summon item ~ ~1 ~ {Motion:[0.1,0.3,-0.2],Item:{id:"minecraft:netherite_leggings",Count:1b,tag:{display:{Name:'{"text":"OP Armor","color":"gold","italic":false}'},Enchantments:[{id:"minecraft:protection",lvl:5s},{id:"minecraft:fire_protection",lvl:5s},{id:"minecraft:blast_protection",lvl:5s},{id:"minecraft:projectile_protection",lvl:5s},{id:"minecraft:respiration",lvl:5s},{id:"minecraft:aqua_affinity",lvl:5s},{id:"minecraft:thorns",lvl:5s},{id:"minecraft:unbreaking",lvl:5s}]}}}
+                        tellraw @a {"text":"The output of lucky TNT is OP Leggings"}
+                        kill @e[type=tnt, distance=..1]
+                        kill @s
+                    }else execute(if score random_tnt rng_score matches 21){
+                        summon item ~ ~1 ~ {Motion:[0.1,0.3,-0.2],Item:{id:"minecraft:netherite_boots",Count:1b,tag:{display:{Name:'{"text":"OP Armor","color":"gold","italic":false}'},Enchantments:[{id:"minecraft:protection",lvl:5s},{id:"minecraft:fire_protection",lvl:5s},{id:"minecraft:blast_protection",lvl:5s},{id:"minecraft:projectile_protection",lvl:5s},{id:"minecraft:respiration",lvl:5s},{id:"minecraft:aqua_affinity",lvl:5s},{id:"minecraft:thorns",lvl:5s},{id:"minecraft:unbreaking",lvl:5s}]}}}
+                        tellraw @a {"text":"The output of lucky TNT is OP Boots"}
+                        kill @e[type=tnt, distance=..1]
+                        kill @s
+                    }else execute(if score random_tnt rng_score matches 22){
+                        summon item ~ ~1 ~ {Motion:[0.1,0.3,-0.2],Item:{id:"minecraft:netherite_sword",Count:1b,tag:{display:{Name:'{"text":"OP Sword","color":"gold","italic":false}'},Enchantments:[{id:"minecraft:sharpness",lvl:5s},{id:"minecraft:smite",lvl:5s},{id:"minecraft:bane_of_arthropods",lvl:5s},{id:"minecraft:knockback",lvl:5s},{id:"minecraft:fire_aspect",lvl:5s},{id:"minecraft:looting",lvl:5s},{id:"minecraft:sweeping",lvl:5s},{id:"minecraft:unbreaking",lvl:5s},{id:"minecraft:mending",lvl:5s}]}}}
+                        tellraw @a {"text":"The output of lucky TNT is OP Sword"}
+                        kill @e[type=tnt, distance=..1]
+                        kill @s
+                    }else execute(if score random_tnt rng_score matches 23){
+                        summon item ~ ~1 ~ {Motion:[0.1,0.3,-0.2],Item:{id:"minecraft:netherite_axe",Count:1b,tag:{display:{Name:'{"text":"OP Axe","color":"gold","italic":false}'},Enchantments:[{id:"minecraft:sharpness",lvl:5s},{id:"minecraft:smite",lvl:5s},{id:"minecraft:bane_of_arthropods",lvl:5s},{id:"minecraft:knockback",lvl:5s},{id:"minecraft:fire_aspect",lvl:5s},{id:"minecraft:looting",lvl:5s},{id:"minecraft:sweeping",lvl:5s},{id:"minecraft:unbreaking",lvl:5s},{id:"minecraft:mending",lvl:5s}]}}}
+                        tellraw @a {"text":"The output of lucky TNT is OP Axe"}
+                        kill @e[type=tnt, distance=..1]
+                        kill @s
+                    }else execute(if score random_tnt rng_score matches 24){
+                        LOOP(8,i){
+                            summon zombie ~ ~ ~ {IsBaby:1b}
+                        }
+                        tellraw @a {"text":"The output of lucky TNT is Baby Zombies"}
+                        kill @e[type=tnt, distance=..1]
+                        kill @s
+                    }else execute(if score random_tnt rng_score matches 25){
+                        LOOP(8,i){
+                            summon cave_spider ~ ~ ~
+                        }
+                        tellraw @a {"text":"The output of lucky TNT is Cave Spider"}
+                        kill @e[type=tnt, distance=..1]
+                        kill @s
+                    }else execute(if score random_tnt rng_score matches 26){
+                        LOOP(4,i){
+                            summon illusioner ~ ~ ~
+                        }
+                        tellraw @a {"text":"The output of lucky TNT is Illusioner"}
+                        kill @e[type=tnt, distance=..1]
+                        kill @s
+                    }else execute(if score random_tnt rng_score matches 27){
+                        LOOP(4,i){
+                            summon ravager ~ ~ ~
+                        }
+                        tellraw @a {"text":"The output of lucky TNT is Ravager"}
+                        kill @e[type=tnt, distance=..1]
+                        kill @s
                     }
                 }
             }
@@ -622,6 +731,13 @@ function tick{
                         particle dust 0.000 1.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
                         particle dust 0.000 0.000 1.000 1 ~ ~ ~ 3 3 3 1 700 normal
                     }
+                    execute positioned ~-10 ~20 ~-10 run{
+                        LOOP(20,i){
+                            LOOP(20,j){
+                                summon item ~<%i%> ~ ~<%j%> {Item:{id:"minecraft:cookie",Count:1b,tag:{Enchantments:[{}]}}}
+                            }
+                        }
+                    } 
                 }
 
                 # Kill the AS if TNT is exploded
@@ -656,20 +772,35 @@ function tick{
                     playsound minecraft:block.beacon.activate master @a ~ ~10 ~ 2 0.5
                     tellraw @a {"text":"Satellite Summon", "color":"green"}
                     sequence{
-                        delay 4s
-                        execute as @e[type=armor_stand, tag=sat] at @s run{
-                            tag @s add sat_firing
-                            playsound minecraft:item.trident.return master @a ~ ~ ~ 2 0.1
-                        } 
-                        tellraw @a {"text":"[Satellite] Target Acquired", "color":"green"}
-                        delay 2s
-                        execute at @e[type=armor_stand, tag=sat] run{
-                            tellraw @a {"text":"[Satellite] Firing", "color":"green"}
-                            summon fireball ~ ~-0.35 ~ {ExplosionPower:15b,power:[0.0,-0.2,0.0],Item:{id:"minecraft:end_crystal",Count:1b}}
+                        LOOP(5,i){
+                            delay 4s
+                            execute as @e[type=armor_stand, tag=sat] at @s run{
+                                tag @s add sat_firing
+                                playsound minecraft:item.trident.return master @a ~ ~ ~ 2 0.1
+                            } 
+                            tellraw @a {"text":"[Satellite] Target Acquired", "color":"green"}
+                            delay 2s
+                            execute at @e[type=armor_stand, tag=sat] run{
+                                tellraw @a {"text":"[Satellite] Firing", "color":"green"}
+                                summon fireball ~ ~-0.35 ~ {ExplosionPower:15b,power:[0.0,-0.2,0.0],Item:{id:"minecraft:end_crystal",Count:1b}}
+                            }
+                            delay 3s
+                            tellraw @a {"text":"[Satellite] Target Destroyed, Teleporting...", "color":"green"}
+                            execute as @e[type=armor_stand, tag=sat] at @s run{
+                                <%%
+                                    function getRandomArbitrary(min, max) {
+                                        return Math.random() * (max - min) + min;
+                                    }
+                                    emit(`tp @s ~${getRandomArbitrary(-35, 35)} ~ ~${getRandomArbitrary(-35, 35)}`)
+                                %%>
+                            }
+                            <%%
+                                if(i == 4){
+                                    emit(`tellraw @a {"text":"[Satellite] Returning...", "color":"green"}`)
+                                    emit(`kill @e[type=armor_stand, tag=sat]`)
+                                }
+                            %%>
                         }
-                        delay 3s
-                        tellraw @a {"text":"[Satellite] Target Destroyed", "color":"green"}
-                        kill @e[type=armor_stand, tag=sat]
                     }
                     
                 }
@@ -950,7 +1081,7 @@ function lucky{
 }
 function confetti{
     givetnt <Confetti TNT> 110010 confetti
-    tellraw @s {"text":"Lots of rainbow colors!","color":"gold"}
+    tellraw @s {"text":"Lots of rainbow colors! ...and cookies?","color":"gold"}
 }
 function laser{
     givetnt <Laser TNT> 110011 laser

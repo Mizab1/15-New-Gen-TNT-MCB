@@ -1,4 +1,3 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-kill @a[tag=on_shader_undo]
-gamerule doImmediateRespawn false
+time add 10s

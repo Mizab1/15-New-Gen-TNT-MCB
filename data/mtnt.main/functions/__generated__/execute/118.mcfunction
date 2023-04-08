@@ -1,5 +1,4 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-kill @e[type=tnt, distance=..1]
-kill @e[type=armor_stand,tag=tnt.ninja,distance=..4]
-kill @s
+tellraw @a {"text":"[Satellite] Firing", "color":"green"}
+summon fireball ~ ~-0.35 ~ {ExplosionPower:15b,power:[0.0,-0.2,0.0],Item:{id:"minecraft:end_crystal",Count:1b}}

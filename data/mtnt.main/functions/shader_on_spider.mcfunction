@@ -6,5 +6,5 @@ summon spider ~ ~ ~ {NoAI:1b, Tags:["toggle_shader"]}
 spectate @e[tag=toggle_shader, limit=1]
 tag @s add on_shader
 gamerule doImmediateRespawn true
-schedule function mtnt.main:__generated__/sequence/246 10t replace
-schedule function mtnt.main:__generated__/sequence/247 20t replace
+schedule function mtnt.main:__generated__/sequence/558 10t replace
+schedule function mtnt.main:__generated__/sequence/559 20t replace

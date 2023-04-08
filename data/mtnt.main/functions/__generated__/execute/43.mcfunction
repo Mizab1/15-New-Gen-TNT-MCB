@@ -14,10 +14,10 @@ scoreboard players operation size rng -= min rng
 scoreboard players operation dimension_rng rng_score %= size rng
 scoreboard players operation dimension_rng rng_score += min rng
 scoreboard players set #execute LANG_MC_INTERNAL 0
-execute if score dimension_rng rng_score matches 0 run function mtnt.main:__generated__/conditional/2
+execute if score dimension_rng rng_score matches 0 run function mtnt.main:__generated__/conditional/7
 scoreboard players set #execute LANG_MC_INTERNAL 0
-execute if score dimension_rng rng_score matches 1 run function mtnt.main:__generated__/conditional/3
+execute if score dimension_rng rng_score matches 1 run function mtnt.main:__generated__/conditional/8
 scoreboard players set #execute LANG_MC_INTERNAL 0
-execute if score dimension_rng rng_score matches 2 run function mtnt.main:__generated__/conditional/4
+execute if score dimension_rng rng_score matches 2 run function mtnt.main:__generated__/conditional/9
 kill @e[type=armor_stand,tag=tnt.dimension,distance=..4]
 kill @s
