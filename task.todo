@@ -34,3 +34,21 @@ Send to Euc
 - 7. add sandstorm sound to the tnt, also increase the area of particles and don't add blindness @done
 - 8. rain tnt is detection if the player is covered with ceiling or something? same for the sun, and also is missing thunder sounds @done
 - 9. move the cloud 3 blocks higher @done
+
+-- Test2
+-Puffcursion TNT - Literally KILLS your game, idk how it'll do when recording and trying to show it off? @done
+-- we can neffer the tnt and make it showable instead to crash your game x), it is just a classic feature @done
+-Confetti TNT - Would be cool if diamonds fell from the sky...or maybe a bunch of enchanted cookies? @done
+-- ok @done
+-Time TNT - For video purposes, doesn't really give something entertaining to show? Maybe we could make it so that Day to night cycle is rapidly fast and all mobs and surrounding entities just begin to spin? @done
+-- you have to summon mobs and it will freeze them, maybe we can add also the set night command (is not possible to add the day night animation, bc doesn't looks well) @done
+-Laser TNT - Maybe make this shoot rapid fire rather than 1 big explosion? or maybe make it shoot in different directions? Maybe provide a GUI that allows you to select different parts of the map for explosion? @done
+-- we could improve the particles of the laser and make it stronger or add more lasers, but add a GUI is too complex @done
+-Lucky TNT - Should maybe give more valuable items? Should serve more as a lucky block, not sure if making it just different types of the TNT we already have is anything content worthy.
+-- we can add more luckyblock stuff
+-Music TNT - Maybe we can make it so that it explodes and spawns 3 NPC's that shift and dance in harmony and spit cookies everytime they shift?
+-- okey
+-Cloud TNT - Make this so that each TNT that drops from the cloud is bigger than the previous.
+-- we can edit the power of the tnt, not the size
+-Sandstorm TNT - Can there be more of a visual to this? Any sand particles we could use that could spin around the player?
+-- ok
