@@ -16,7 +16,7 @@
 
 -! Change rain particle
 -! Update TNT count in lucky TNT
--407 67 -289
+- -200 64 228: ship: old
 
 Send to Euc
 - `master` tag for exclusion  
@@ -52,3 +52,7 @@ Send to Euc
 -- we can edit the power of the tnt, not the size @done
 -Sandstorm TNT - Can there be more of a visual to this? Any sand particles we could use that could spin around the player? @done
 -- ok @done
+
+-- Test3
+- Pirate TNT -> Could we make the pirate ship have loot inside of it? Maybe an ability to man some external TNT cannons on the ship?? @done
+- Laser TNT -> Sattelite it too slow, could we speed up the rate of firing?
