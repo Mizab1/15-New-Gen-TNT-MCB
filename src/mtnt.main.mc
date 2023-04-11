@@ -799,7 +799,7 @@ function tick{
                     tellraw @a {"text":"Satellite Summon", "color":"green"}
                     sequence{
                         LOOP(5,i){
-                            delay 2s
+                            delay 10t
                             execute as @e[type=armor_stand, tag=sat] at @s run{
                                 tag @s add sat_firing
                                 playsound minecraft:item.trident.return master @a ~ ~ ~ 2 0.1
@@ -810,7 +810,7 @@ function tick{
                                 tellraw @a {"text":"[Satellite] Firing", "color":"green"}
                                 summon fireball ~ ~-0.35 ~ {ExplosionPower:15b,power:[0.0,-0.2,0.0],Item:{id:"minecraft:end_crystal",Count:1b}}
                             }
-                            delay 1s
+                            delay 10t
                             tellraw @a {"text":"[Satellite] Target Destroyed, Teleporting...", "color":"green"}
                             execute as @e[type=armor_stand, tag=sat] at @s run{
                                 <%%

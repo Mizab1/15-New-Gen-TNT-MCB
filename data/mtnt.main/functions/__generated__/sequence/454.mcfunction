@@ -1,3 +1,3 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-execute as @a at @s run tp @s ~ ~ ~ ~1.66 ~-0.94
+execute as @a at @s run tp @s ~ ~ ~ ~1.71 ~-0.35
