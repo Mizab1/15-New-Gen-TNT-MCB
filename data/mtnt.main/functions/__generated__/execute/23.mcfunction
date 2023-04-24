@@ -15,3 +15,7 @@ execute if entity @s[tag=puffcursion] run function mtnt.main:__generated__/execu
 execute if entity @s[tag=glitch] run function mtnt.main:__generated__/execute/36
 execute if entity @s[tag=ninja] run function mtnt.main:__generated__/execute/37
 execute if entity @s[tag=pirate] run function mtnt.main:__generated__/execute/38
+execute if entity @s[tag=warden] run function mtnt.main:__generated__/execute/39
+execute if entity @s[tag=drone] run function mtnt.main:__generated__/execute/40
+execute if entity @s[tag=betty] run function mtnt.main:__generated__/execute/41
+execute if entity @s[tag=uav] run function mtnt.main:__generated__/execute/42

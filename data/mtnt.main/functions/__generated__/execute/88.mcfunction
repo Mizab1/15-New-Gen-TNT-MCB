@@ -1,6 +1,7 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-scoreboard players set #execute LANG_MC_INTERNAL 0
-execute if entity @e[type=tnt,distance=..0.5] run function mtnt.main:__generated__/conditional/22
-scoreboard players set #execute LANG_MC_INTERNAL 0
-execute unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5] run function mtnt.main:__generated__/conditional/23
+time set noon
+tellraw @a [{"text":"The sun is now very bright","color":"red"}]
+execute as @a[tag=!master] at @s run function mtnt.main:shader_on_spider
+scoreboard players set acid_rain private 1
+schedule function mtnt.main:__generated__/schedule/2 15s replace

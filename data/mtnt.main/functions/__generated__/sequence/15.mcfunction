@@ -2,5 +2,5 @@
 
 scoreboard players set dance_move private 0
 stopsound @a
-execute as @a[tag=!master] run function mtnt.main:__generated__/execute/79
+execute as @a[tag=!master] run function mtnt.main:__generated__/execute/83
 kill @e[tag=dancing]

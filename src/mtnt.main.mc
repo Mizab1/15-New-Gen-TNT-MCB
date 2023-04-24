@@ -18,6 +18,8 @@ function load{
     scoreboard objectives add pos_y2 dummy
     scoreboard objectives add pos_z2 dummy
 
+    scoreboard objectives add rc_clicked minecraft.used:minecraft.carrot_on_a_stick
+
 
     gamerule universalAnger true  
     gamerule showDeathMessages false
@@ -202,6 +204,22 @@ function tick{
         #--- pirate
         execute if entity @s[tag=pirate] run{
             placetnt pirate 110015
+        }
+        #--- warden
+        execute if entity @s[tag=warden] run{
+            placetnt warden 110016
+        }
+        #--- drone
+        execute if entity @s[tag=drone] run{
+            placetnt drone 110017
+        }
+        #--- betty
+        execute if entity @s[tag=betty] run{
+            placetnt betty 110018
+        }
+        #--- uav
+        execute if entity @s[tag=uav] run{
+            placetnt uav 110019
         }
     }
 
@@ -997,6 +1015,194 @@ function tick{
                 kill @s
             }
         }
+
+        #--- warden
+        execute if entity @s[tag=tnt.warden] run{
+            execute(if entity @e[type=tnt,distance=..0.5]){
+                # Teleport itself to the ignited TNT
+                tp @s @e[type=tnt,distance=..0.5,sort=nearest,limit=1]
+
+                # Use its 'fuse_time' scoreboard to link with 'Fuse' of TNT
+                execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
+
+                # Runs a particle effect when ignited
+                execute if score @s fuse_time matches 1..80 run block{
+                    particle minecraft:block black_concrete ~ ~ ~ 1 1 1 1 20
+                }
+
+                # Execute the Exploding Mechanics
+                execute if score @s fuse_time matches 2 run{
+                    execute as @a[sort=random, limit=1] at @s run{
+                        function main:warden_morph_main
+                        give @s carrot_on_a_stick{display:{Name:'{"text":"Shoot TNT","color":"green","italic":false}',Lore:['{"text":"Right Click to Shoot","color":"light_purple","italic":false}']},HideFlags:63,Unbreakable:1b,CustomModelData:101106} 1
+                    }
+                    schedule 15s replace{
+                        execute as @a[tag=warden_morphed_player] at @s run{
+                            function main:demorph
+                            clear @s carrot_on_a_stick{display:{Name:'{"text":"Shoot TNT","color":"green","italic":false}',Lore:['{"text":"Right Click to Shoot","color":"light_purple","italic":false}']},HideFlags:63,Unbreakable:1b,CustomModelData:101106}
+                        }
+                    }
+                }
+
+                # Kill the AS if TNT is exploded
+                execute if score @s fuse_time matches 1 run{
+                    kill @e[type=tnt, distance=..1]
+                    kill @e[type=armor_stand,tag=tnt.warden,distance=..4]
+                    kill @s
+                }
+            }
+            execute(unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5]){
+                # Breaking
+                kill @s
+            }
+        }
+
+        #--- drone
+        execute if entity @s[tag=tnt.drone] run{
+            execute(if entity @e[type=tnt,distance=..0.5]){
+                # Teleport itself to the ignited TNT
+                tp @s @e[type=tnt,distance=..0.5,sort=nearest,limit=1]
+
+                # Use its 'fuse_time' scoreboard to link with 'Fuse' of TNT
+                execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
+
+                # Runs a particle effect when ignited
+                execute if score @s fuse_time matches 1..80 run block{
+                    particle minecraft:block white_concrete ~ ~ ~ 1 1 1 1 20
+                }
+
+                # Execute the Exploding Mechanics
+                execute if score @s fuse_time matches 2 run{
+                    function lockdown:devices/drone/summon
+                    schedule 30s replace{
+                        kill @e[type=armor_stand, tag=ld_drone]
+                        kill @e[type=bee, tag=ld_drone_hitbox]
+                    }
+                }
+
+                # Kill the AS if TNT is exploded
+                execute if score @s fuse_time matches 1 run{
+                    kill @e[type=tnt, distance=..1]
+                    kill @e[type=armor_stand,tag=tnt.drone,distance=..4]
+                    kill @s
+                }
+            }
+            execute(unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5]){
+                # Breaking
+                kill @s
+            }
+        }
+
+        #--- betty
+        execute if entity @s[tag=tnt.betty] run{
+            execute(if entity @e[type=tnt,distance=..0.5]){
+                # Teleport itself to the ignited TNT
+                tp @s @e[type=tnt,distance=..0.5,sort=nearest,limit=1]
+
+                # Use its 'fuse_time' scoreboard to link with 'Fuse' of TNT
+                execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
+
+                # Runs a particle effect when ignited
+                execute if score @s fuse_time matches 1..80 run block{
+                    particle minecraft:block brown_concrete ~ ~ ~ 1 1 1 1 20
+                }
+
+                # Execute the Exploding Mechanics
+                execute if score @s fuse_time matches 2 run{
+                    summon cow ~ ~ ~ {DeathLootTable:"minecraft:bat",Health:300f,Tags:["betty"],Attributes:[{Name:generic.max_health,Base:300},{Name:generic.movement_speed,Base:0.5}]}
+                    schedule 20s replace{
+                        kill @e[type=cow,tag=betty]
+                    }
+                }
+
+                # Kill the AS if TNT is exploded
+                execute if score @s fuse_time matches 1 run{
+                    kill @e[type=tnt, distance=..1]
+                    kill @e[type=armor_stand,tag=tnt.betty,distance=..4]
+                    kill @s
+                }
+            }
+            execute(unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5]){
+                # Breaking
+                kill @s
+            }
+        }
+
+        #--- uav
+        execute if entity @s[tag=tnt.uav] run{
+            execute(if entity @e[type=tnt,distance=..0.5]){
+                # Teleport itself to the ignited TNT
+                tp @s @e[type=tnt,distance=..0.5,sort=nearest,limit=1]
+
+                # Use its 'fuse_time' scoreboard to link with 'Fuse' of TNT
+                execute store result score @s fuse_time run data get entity @e[type=tnt,distance=..0.5,limit=1] Fuse
+
+                # Runs a particle effect when ignited
+                execute if score @s fuse_time matches 1..80 run block{
+                    particle minecraft:block iron_block ~ ~ ~ 1 1 1 1 20
+                }
+
+                # Execute the Exploding Mechanics
+                execute if score @s fuse_time matches 2 run{
+                    <%%
+                        let noOfTnts = 50;
+                        let offset = noOfTnts / 2 * 2;
+                        for (let i = 0; i < noOfTnts; i++) {
+                            for (let j = 0; j < noOfTnts; j++) {
+                                emit(`summon tnt ~${(i * 2) - offset} ~30 ~${(j * 2) - offset} {Fuse:50}`)
+                            }  
+                        }
+                    %%>
+                }
+
+                # Kill the AS if TNT is exploded
+                execute if score @s fuse_time matches 1 run{
+                    # kill @e[type=tnt, distance=..1]
+                    kill @e[type=armor_stand,tag=tnt.uav,distance=..4]
+                    kill @s
+                }
+            }
+            execute(unless block ~ ~ ~ tnt unless entity @e[type=tnt,distance=..0.5]){
+                # Breaking
+                kill @s
+            }
+        }
+    }
+
+    # Betty 
+    execute as @e[type=cow, tag=betty] at @s run{
+        execute if entity @s[nbt={HurtTime:1s}] run summon item ~ ~ ~ {PickupDelay:40,CustomName:'{"text":"Magic Milk","color":"gold","italic":false}',Item:{id:"minecraft:carrot_on_a_stick",Count:1b,tag:{CustomModelData:101107}}}
+    }
+    execute as @a[scores={rc_clicked=1..}, predicate=mtnt.main:drank_milk] at @s anchored eyes positioned ^ ^ ^1 run{
+        loot give @s loot minecraft:betty_loot
+        clear @s carrot_on_a_stick{CustomModelData:101107} 1
+        scoreboard players set @s rc_clicked 0
+    }
+    # Shoot TNT
+    execute as @a[scores={rc_clicked=1..}, predicate=mtnt.main:shoot_tnt] at @s anchored eyes positioned ^ ^ ^1 run{
+        summon tnt ~ ~ ~ {Tags:["warden_tnt"], Fuse:40}
+        scoreboard players set @s rc_clicked 0
+    }
+    execute as @e[type=tnt, tag=warden_tnt, tag=!tag_added] at @s rotated as @a[tag=warden_morphed_player, limit=1, sort=nearest] run{
+        execute store result score @s pos_x1 run data get entity @s Pos[0] 1000
+        execute store result score @s pos_y1 run data get entity @s Pos[1] 1000
+        execute store result score @s pos_z1 run data get entity @s Pos[2] 1000
+
+        tp @s ^ ^ ^0.1
+
+        execute store result score @s pos_x2 run data get entity @s Pos[0] 1000
+        execute store result score @s pos_y2 run data get entity @s Pos[1] 1000
+        execute store result score @s pos_z2 run data get entity @s Pos[2] 1000
+
+        scoreboard players operation @s pos_x2 -= @s pos_x1
+        scoreboard players operation @s pos_y2 -= @s pos_y1
+        scoreboard players operation @s pos_z2 -= @s pos_z1 
+
+        execute store result entity @s Motion[0] double 0.01 run scoreboard players get @s pos_x2
+        execute store result entity @s Motion[1] double 0.01 run scoreboard players get @s pos_y2
+        execute store result entity @s Motion[2] double 0.01 run scoreboard players get @s pos_z2 
+
+        tag @s add tag_added
     }
 }
 function shader_on_spider{
@@ -1129,6 +1335,22 @@ function pirate{
     givetnt <Pirate TNT> 110015 pirate
     tellraw @s {"text":"Summon pirate ship with cannon","color":"gold"}
 }
+function warden{
+    givetnt <Warden TNT> 110016 warden
+    tellraw @s {"text":"Morph any one player into warden","color":"gold"}
+}
+function drone{
+    givetnt <Drone TNT> 110017 drone
+    tellraw @s {"text":"Summons a drone that will attack the player","color":"gold"}
+}
+function betty{
+    givetnt <Betty TNT> 110018 betty
+    tellraw @s {"text":"Spawns a very fast cow, which when hit drop a milk bucket and right clicking it will give you a random loot","color":"gold"}
+}
+function uav{
+    givetnt <UAV TNT> 110019 uav
+    tellraw @s {"text":"Spawns a bunch of falling TNT","color":"gold"}
+}
 
 #> Misc.
 function reset_hat{
@@ -1142,6 +1364,31 @@ function click_hat{
     execute as @a at @s run{
         summon firework_rocket ^1 ^ ^ {LifeTime:20,FireworksItem:{id:firework_rocket,Count:1,tag:{Fireworks:{Explosions:[{Type:2,Trail:1b,Colors:[I;3691519,16383810,16711680]},{Type:0,Colors:[I;382463,16723676]}]}}}}
         summon firework_rocket ^-1 ^ ^ {LifeTime:20,FireworksItem:{id:firework_rocket,Count:1,tag:{Fireworks:{Explosions:[{Type:2,Trail:1b,Colors:[I;3691519,16383810,16711680]},{Type:0,Colors:[I;382463,16723676]}]}}}}
+    }
+}
+
+predicate shoot_tnt{
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "equipment": {
+            "mainhand": {
+                "item": "minecraft:carrot_on_a_stick",
+                "nbt": "{CustomModelData:101106}"
+            }
+        }
+    }
+}
+predicate drank_milk{
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "equipment": {
+            "mainhand": {
+                "item": "minecraft:carrot_on_a_stick",
+                "nbt": "{CustomModelData:101107}"
+            }
+        }
     }
 }
 

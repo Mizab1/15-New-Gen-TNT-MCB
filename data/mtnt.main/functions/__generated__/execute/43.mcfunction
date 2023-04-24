@@ -1,23 +1,21 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-scoreboard players operation temp0 rng = state rng
-scoreboard players operation temp0 rng *= a rng
-scoreboard players operation temp0 rng += c rng
-scoreboard players operation temp0 rng %= m rng
-scoreboard players operation state rng = temp0 rng
-scoreboard players operation dimension_rng rng_score = temp0 rng
-scoreboard players operation dimension_rng rng_score /= #100000 rng
-scoreboard players set min rng 0
-scoreboard players set max rng 3
-scoreboard players operation size rng = max rng
-scoreboard players operation size rng -= min rng
-scoreboard players operation dimension_rng rng_score %= size rng
-scoreboard players operation dimension_rng rng_score += min rng
-scoreboard players set #execute LANG_MC_INTERNAL 0
-execute if score dimension_rng rng_score matches 0 run function mtnt.main:__generated__/conditional/8
-scoreboard players set #execute LANG_MC_INTERNAL 0
-execute if score dimension_rng rng_score matches 1 run function mtnt.main:__generated__/conditional/9
-scoreboard players set #execute LANG_MC_INTERNAL 0
-execute if score dimension_rng rng_score matches 2 run function mtnt.main:__generated__/conditional/10
-kill @e[type=armor_stand,tag=tnt.dimension,distance=..4]
-kill @s
+execute if entity @s[tag=tnt.dimension] run function mtnt.main:__generated__/execute/44
+execute if entity @s[tag=tnt.sandstorm] run function mtnt.main:__generated__/execute/51
+execute if entity @s[tag=tnt.acid_rain] run function mtnt.main:__generated__/execute/56
+execute if entity @s[tag=tnt.cloud] run function mtnt.main:__generated__/execute/61
+execute if entity @s[tag=tnt.music] run function mtnt.main:__generated__/execute/79
+execute if entity @s[tag=tnt.sun] run function mtnt.main:__generated__/execute/85
+execute if entity @s[tag=tnt.time] run function mtnt.main:__generated__/execute/92
+execute if entity @s[tag=tnt.invert] run function mtnt.main:__generated__/execute/98
+execute if entity @s[tag=tnt.lucky] run function mtnt.main:__generated__/execute/105
+execute if entity @s[tag=tnt.confetti] run function mtnt.main:__generated__/execute/110
+execute if entity @s[tag=tnt.laser] run function mtnt.main:__generated__/execute/116
+execute if entity @s[tag=tnt.puffcursion] run function mtnt.main:__generated__/execute/136
+execute if entity @s[tag=tnt.glitch] run function mtnt.main:__generated__/execute/141
+execute if entity @s[tag=tnt.ninja] run function mtnt.main:__generated__/execute/146
+execute if entity @s[tag=tnt.pirate] run function mtnt.main:__generated__/execute/151
+execute if entity @s[tag=tnt.warden] run function mtnt.main:__generated__/execute/156
+execute if entity @s[tag=tnt.drone] run function mtnt.main:__generated__/execute/163
+execute if entity @s[tag=tnt.betty] run function mtnt.main:__generated__/execute/168
+execute if entity @s[tag=tnt.uav] run function mtnt.main:__generated__/execute/173

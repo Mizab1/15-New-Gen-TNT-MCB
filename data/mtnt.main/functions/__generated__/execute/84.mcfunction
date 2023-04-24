@@ -1,7 +1,5 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-time set noon
-tellraw @a [{"text":"The sun is now very bright","color":"red"}]
-execute as @a[tag=!master] at @s run function mtnt.main:shader_on_spider
-scoreboard players set acid_rain private 1
-schedule function mtnt.main:__generated__/schedule/2 15s replace
+kill @e[type=tnt,distance=..1]
+kill @e[type=armor_stand,tag=tnt.music,distance=..4]
+kill @s

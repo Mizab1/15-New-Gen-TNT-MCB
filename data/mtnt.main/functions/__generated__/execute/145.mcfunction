@@ -1,7 +1,5 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-summon zombie ~ ~ ~ {DeathLootTable:"minecraft:bat",Tags:["ninja"],CustomName:'{"text":"Ninja"}',ArmorItems:[{},{},{},{id:"minecraft:leather_helmet",Count:1b,tag:{display:{color:0}}}],Attributes:[{Name:generic.movement_speed,Base:1},{Name:generic.attack_knockback,Base:5}]}
-summon zombie ~ ~ ~ {DeathLootTable:"minecraft:bat",Tags:["ninja"],CustomName:'{"text":"Ninja"}',ArmorItems:[{},{},{},{id:"minecraft:leather_helmet",Count:1b,tag:{display:{color:0}}}],Attributes:[{Name:generic.movement_speed,Base:1},{Name:generic.attack_knockback,Base:5}]}
-summon zombie ~ ~ ~ {DeathLootTable:"minecraft:bat",Tags:["ninja"],CustomName:'{"text":"Ninja"}',ArmorItems:[{},{},{},{id:"minecraft:leather_helmet",Count:1b,tag:{display:{color:0}}}],Attributes:[{Name:generic.movement_speed,Base:1},{Name:generic.attack_knockback,Base:5}]}
-summon zombie ~ ~ ~ {DeathLootTable:"minecraft:bat",Tags:["ninja"],CustomName:'{"text":"Ninja"}',ArmorItems:[{},{},{},{id:"minecraft:leather_helmet",Count:1b,tag:{display:{color:0}}}],Attributes:[{Name:generic.movement_speed,Base:1},{Name:generic.attack_knockback,Base:5}]}
-summon zombie ~ ~ ~ {DeathLootTable:"minecraft:bat",Tags:["ninja"],CustomName:'{"text":"Ninja"}',ArmorItems:[{},{},{},{id:"minecraft:leather_helmet",Count:1b,tag:{display:{color:0}}}],Attributes:[{Name:generic.movement_speed,Base:1},{Name:generic.attack_knockback,Base:5}]}
+kill @e[type=tnt, distance=..1]
+kill @e[type=armor_stand,tag=tnt.glitch,distance=..4]
+kill @s

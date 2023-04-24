@@ -1,5 +1,5 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-execute as @a[tag=!master] at @s run function mtnt.main:shader_on_creeper
-schedule function mtnt.main:__generated__/schedule/3 15s replace
-tellraw @a [{"text":"The screen is now inverted","color":"green"}]
+tag @a[tag=is_igniter] remove is_igniter
+kill @e[type=armor_stand,tag=tnt.time,distance=..4]
+kill @s

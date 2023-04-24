@@ -1,5 +1,4 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-weather rain
-scoreboard players set acid_rain private 1
-schedule function mtnt.main:__generated__/schedule/1 15s replace
+tag @a[tag=!master] add in_sandstorm
+schedule function mtnt.main:__generated__/schedule/0 15s replace
