@@ -1171,7 +1171,7 @@ function tick{
 
     # Betty 
     execute as @e[type=cow, tag=betty] at @s run{
-        execute if entity @s[nbt={HurtTime:1s}] run summon item ~ ~ ~ {PickupDelay:40,CustomName:'{"text":"Magic Milk","color":"gold","italic":false}',Item:{id:"minecraft:carrot_on_a_stick",Count:1b,tag:{CustomModelData:101107}}}
+        execute if entity @s[nbt={HurtTime:1s}] run summon item ~ ~ ~ {PickupDelay:40,Item:{id:"minecraft:carrot_on_a_stick",Count:1b,tag:{display:{Name:'{"text":"Magic Milk","color":"gold","italic":false}'},CustomModelData:101107}}}
     }
     execute as @a[scores={rc_clicked=1..}, predicate=mtnt.main:drank_milk] at @s anchored eyes positioned ^ ^ ^1 run{
         loot give @s loot minecraft:betty_loot
