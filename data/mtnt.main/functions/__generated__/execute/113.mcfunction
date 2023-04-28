@@ -1,42 +1,42 @@
 #built using mc-build (https://github.com/mc-build/mc-build)
 
-summon firework_rocket ~-6.0725733894156475 ~5 ~-1.2827142158916782 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
+summon firework_rocket ~-8.9191369554268 ~5 ~-5.248139098316988 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
 particle dust 1.000 0.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 1.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 0.000 1.000 1 ~ ~ ~ 3 3 3 1 700 normal
-summon firework_rocket ~-3.198335069529672 ~5 ~6.843397459127054 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
+summon firework_rocket ~5.987031437887964 ~5 ~4.488287652053584 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
 particle dust 1.000 0.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 1.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 0.000 1.000 1 ~ ~ ~ 3 3 3 1 700 normal
-summon firework_rocket ~-3.467398108568309 ~5 ~-2.6990584148168972 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
+summon firework_rocket ~-9.47902810314854 ~5 ~-3.808815619877852 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
 particle dust 1.000 0.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 1.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 0.000 1.000 1 ~ ~ ~ 3 3 3 1 700 normal
-summon firework_rocket ~-1.9380631124335501 ~5 ~4.559456111112944 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
+summon firework_rocket ~4.474351264723598 ~5 ~8.641901248173998 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
 particle dust 1.000 0.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 1.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 0.000 1.000 1 ~ ~ ~ 3 3 3 1 700 normal
-summon firework_rocket ~2.564839103476926 ~5 ~2.8254717461311287 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
+summon firework_rocket ~3.0051039316256656 ~5 ~7.21793313078857 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
 particle dust 1.000 0.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 1.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 0.000 1.000 1 ~ ~ ~ 3 3 3 1 700 normal
-summon firework_rocket ~7.388507969894302 ~5 ~3.887981879387068 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
+summon firework_rocket ~-3.6108656616327117 ~5 ~-1.3478114911628616 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
 particle dust 1.000 0.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 1.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 0.000 1.000 1 ~ ~ ~ 3 3 3 1 700 normal
-summon firework_rocket ~-8.94852308426275 ~5 ~-8.54389743812642 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
+summon firework_rocket ~6.9128272590563675 ~5 ~-1.26634634046313 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
 particle dust 1.000 0.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 1.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 0.000 1.000 1 ~ ~ ~ 3 3 3 1 700 normal
-summon firework_rocket ~8.781666603824426 ~5 ~-1.712313808311766 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
+summon firework_rocket ~9.482312937557698 ~5 ~-0.12383005582769258 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
 particle dust 1.000 0.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 1.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 0.000 1.000 1 ~ ~ ~ 3 3 3 1 700 normal
-summon firework_rocket ~-8.845954940514567 ~5 ~-7.551835817045767 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
+summon firework_rocket ~-7.473924985363638 ~5 ~2.1260828249015162 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
 particle dust 1.000 0.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 1.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 0.000 1.000 1 ~ ~ ~ 3 3 3 1 700 normal
-summon firework_rocket ~8.425111717255174 ~5 ~-6.649091556702054 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
+summon firework_rocket ~-3.556242202413884 ~5 ~6.619553845040514 {FireworksItem:{id:"firework_rocket",Count:1,tag:{Fireworks:{Explosions:[{Type:2,Flicker:1b,Trail:1b,Colors:[I;16711680,1647103,16776963]}]}}}}
 particle dust 1.000 0.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 1.000 0.000 1 ~ ~ ~ 3 3 3 1 700 normal
 particle dust 0.000 0.000 1.000 1 ~ ~ ~ 3 3 3 1 700 normal
